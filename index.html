@@ -4,62 +4,75 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Magazine Pro — Plano de Negócios 2026 | PHX Instrumentos</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
---dark:#0f0f1a;--darker:#0a0a12;--card:#16162a;--card2:#1c1c35;
---red:#e94560;--red-glow:rgba(233,69,96,.15);--red-soft:#ff6b81;
---blue:#3b82f6;--blue-dark:#0f3460;--teal:#14b8a6;
---green:#10b981;--gold:#f59e0b;--gold-soft:#fbbf24;
---white:#f8fafc;--gray:#94a3b8;--gray2:#64748b;--gray3:#334155;
---font-display:'DM Serif Display',Georgia,serif;
---font-body:'DM Sans',sans-serif;
---font-mono:'JetBrains Mono',monospace;
+  --primary:#1e3a5f;
+  --primary-light:#2d4a6f;
+  --accent:#c9a227;
+  --accent-light:#d4b43a;
+  --success:#10b981;
+  --danger:#dc2626;
+  --warning:#f59e0b;
+  --info:#3b82f6;
+  --text:#1f2937;
+  --text-light:#6b7280;
+  --text-lighter:#9ca3af;
+  --bg:#fafbfc;
+  --bg-card:#ffffff;
+  --border:#e5e7eb;
+  --border-light:#f3f4f6;
+  --shadow-sm:0 1px 2px rgba(0,0,0,0.04);
+  --shadow:0 4px 20px rgba(0,0,0,0.06);
+  --shadow-lg:0 10px 40px rgba(0,0,0,0.08);
+  --font-display:'Inter',system-ui,sans-serif;
+  --font-body:'Inter',system-ui,sans-serif;
 }
 html{scroll-behavior:smooth}
-body{background:var(--darker);color:var(--white);font-family:var(--font-body);line-height:1.6;overflow-x:hidden}
-
-/* Noise texture overlay */
-body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.6;overflow-x:hidden}
 
 /* Navigation */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,15,26,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(233,69,96,.1);padding:.8rem 2rem;display:flex;align-items:center;justify-content:space-between}
-nav .logo{font-family:var(--font-display);font-size:1.1rem;color:var(--red)}
-nav .logo span{color:var(--gray)}
-nav ul{list-style:none;display:flex;gap:1.5rem}
-nav a{color:var(--gray);text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:.5px;text-transform:uppercase;transition:color .3s}
-nav a:hover{color:var(--red)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0.9rem 3rem;display:flex;align-items:center;justify-content:space-between;transition:all 0.3s ease}
+nav.scrolled{padding:0.6rem 3rem;box-shadow:var(--shadow-sm)}
+nav .logo{font-family:var(--font-display);font-size:1.2rem;color:var(--primary);font-weight:600}
+nav .logo span{color:var(--accent);font-weight:500}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav a{color:var(--text-light);text-decoration:none;font-size:0.8rem;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;transition:all 0.3s;position:relative}
+nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent);transition:width 0.3s}
+nav a:hover{color:var(--primary)}
+nav a:hover::after{width:100%}
 
 /* Hero */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:6rem 4rem 4rem;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-20%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,var(--red-glow) 0%,transparent 70%);border-radius:50%;pointer-events:none;animation:pulse 8s ease-in-out infinite}
-@keyframes pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.2);opacity:.8}}
-.hero-tag{font-family:var(--font-mono);font-size:.75rem;color:var(--red);letter-spacing:3px;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem}
-.hero-tag::before{content:'';width:40px;height:1px;background:var(--red)}
-.hero h1{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4.5rem);line-height:1.1;margin-bottom:1rem}
-.hero h1 em{color:var(--red);font-style:normal}
-.hero .subtitle{font-size:1.1rem;color:var(--gray);max-width:600px;margin-bottom:3rem}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 4rem 5rem;position:relative;overflow:hidden;background:linear-gradient(135deg,#ffffff 0%,#f8fafc 50%,#f1f5f9 100%)}
+.hero::before{content:'';position:absolute;top:-30%;right:-15%;width:700px;height:700px;background:radial-gradient(circle,rgba(201,162,39,0.08) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-20%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(30,58,95,0.06) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.hero-content{position:relative;z-index:1;max-width:1200px;margin:0 auto;width:100%}
+.hero-tag{font-family:var(--font-mono);font-size:0.7rem;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.8rem;font-weight:600}
+.hero-tag::before{content:'';width:30px;height:1.5px;background:var(--accent)}
+.hero h1{font-family:var(--font-display);font-size:clamp(2.8rem,5vw,4.5rem);line-height:1.1;margin-bottom:1.2rem;color:var(--primary);font-weight:600}
+.hero h1 em{color:var(--accent);font-style:normal}
+.hero .subtitle{font-size:1.15rem;color:var(--text-light);max-width:650px;margin-bottom:4rem;font-weight:400;line-height:1.7}
 
 /* Stats Row */
-.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2rem}
-.stat-card{background:var(--card);border:1px solid rgba(255,255,255,.04);border-radius:16px;padding:1.8rem;position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
-.stat-card:hover{transform:translateY(-4px);border-color:rgba(233,69,96,.2)}
-.stat-card .value{font-family:var(--font-display);font-size:2.2rem;color:var(--white);margin-bottom:.3rem}
-.stat-card .label{font-size:.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px}
-.stat-card.accent .value{color:var(--red)}
-.stat-card.green .value{color:var(--green)}
-.stat-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),transparent)}
-.stat-card.green::after{background:linear-gradient(90deg,var(--green),transparent)}
-.stat-card.gold::after{background:linear-gradient(90deg,var(--gold),transparent)}
-.stat-card.blue::after{background:linear-gradient(90deg,var(--blue),transparent)}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:1rem}
+.stat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);box-shadow:var(--shadow)}
+.stat-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--accent)}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--primary));opacity:0.8}
+.stat-card .value{font-family:var(--font-body);font-size:2.4rem;color:var(--primary);margin-bottom:0.4rem;font-weight:600}
+.stat-card .label{font-size:0.75rem;color:var(--text-light);text-transform:uppercase;letter-spacing:1.5px;font-weight:500}
+.stat-card.accent .value{color:var(--accent)}
+.stat-card.success .value{color:var(--success)}
+.stat-card.info .value{color:var(--info)}
 
 /* Sections */
-section{padding:5rem 4rem}
-.section-tag{font-family:var(--font-mono);font-size:.7rem;color:var(--red);letter-spacing:3px;text-transform:uppercase;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
-.section-tag::before{content:'';width:24px;height:1px;background:var(--red)}
-section h2{font-family:var(--font-display);font-size:2.2rem;margin-bottom:.5rem}
-section .desc{color:var(--gray);font-size:.95rem;margin-bottom:2.5rem;max-width:700px}
+section{padding:5rem 4rem;position:relative}
+section:nth-child(even){background:var(--bg-card)}
+.section-header{max-width:1200px;margin:0 auto 3rem}
+.section-tag{font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:0.8rem;display:flex;align-items:center;gap:0.6rem;font-weight:600}
+.section-tag::before{content:'';width:20px;height:1.5px;background:var(--accent)}
+section h2{font-family:var(--font-display);font-size:2.4rem;margin-bottom:0.8rem;color:var(--primary);font-weight:600}
+section .desc{color:var(--text-light);font-size:1rem;margin-bottom:0;max-width:700px;line-height:1.7}
 
 /* Grid layouts */
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
@@ -67,116 +80,151 @@ section .desc{color:var(--gray);font-size:.95rem;margin-bottom:2.5rem;max-width:
 .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
 
 /* Cards */
-.card{background:var(--card);border:1px solid rgba(255,255,255,.04);border-radius:16px;padding:2rem;transition:transform .3s}
-.card:hover{transform:translateY(-2px)}
-.card h3{font-family:var(--font-display);font-size:1.3rem;margin-bottom:.8rem}
-.card p{color:var(--gray);font-size:.9rem}
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);box-shadow:var(--shadow)}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--border-light)}
+.card h3{font-family:var(--font-display);font-size:1.25rem;margin-bottom:1rem;color:var(--primary);font-weight:600}
+.card p{color:var(--text-light);font-size:0.9rem;line-height:1.7}
 
-/* Chart bars */
-.chart-container{background:var(--card);border-radius:16px;padding:2rem;border:1px solid rgba(255,255,255,.04)}
-.bar-chart{display:flex;align-items:flex-end;gap:1rem;height:280px;padding-top:1rem}
-.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:.5rem}
-.bar{width:100%;border-radius:8px 8px 0 0;background:linear-gradient(180deg,var(--red),var(--blue-dark));transition:height 1.5s cubic-bezier(.4,0,.2,1);position:relative;min-height:4px}
-.bar:hover{filter:brightness(1.3)}
-.bar .val{position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:.7rem;color:var(--white);white-space:nowrap}
-.bar-label{font-size:.75rem;color:var(--gray);text-align:center}
+/* Chart containers */
+.chart-container{background:var(--bg-card);border-radius:20px;padding:2.5rem;border:1px solid var(--border);box-shadow:var(--shadow)}
+.chart-title{font-size:0.75rem;color:var(--text-light);margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:1.5px;font-weight:600}
 
 /* Horizontal bars */
-.h-bar-chart{display:flex;flex-direction:column;gap:.8rem}
-.h-bar-row{display:flex;align-items:center;gap:1rem}
-.h-bar-label{width:100px;font-size:.8rem;color:var(--gray);text-align:right;flex-shrink:0}
-.h-bar-track{flex:1;height:28px;background:var(--card2);border-radius:6px;overflow:hidden;position:relative}
-.h-bar-fill{height:100%;border-radius:6px;transition:width 1.5s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-family:var(--font-mono);font-size:.7rem;color:var(--white)}
-.h-bar-fill.red{background:linear-gradient(90deg,var(--red),var(--red-soft))}
-.h-bar-fill.blue{background:linear-gradient(90deg,var(--blue-dark),var(--blue))}
-.h-bar-fill.green{background:linear-gradient(90deg,var(--teal),var(--green))}
-.h-bar-fill.gold{background:linear-gradient(90deg,var(--gold),var(--gold-soft))}
+.h-bar-chart{display:flex;flex-direction:column;gap:1rem}
+.h-bar-row{display:flex;align-items:center;gap:1.2rem}
+.h-bar-label{width:90px;font-size:0.8rem;color:var(--text-light);text-align:right;flex-shrink:0;font-weight:500}
+.h-bar-track{flex:1;height:32px;background:var(--border-light);border-radius:8px;overflow:hidden;position:relative}
+.h-bar-fill{height:100%;border-radius:8px;transition:width 1.5s cubic-bezier(0.4,0,0.2,1);display:flex;align-items:center;justify-content:flex-end;padding-right:12px;font-family:var(--font-body);font-size:0.75rem;color:var(--text);font-weight:600}
+.h-bar-fill.primary{background:linear-gradient(90deg,var(--primary),var(--primary-light))}
+.h-bar-fill.accent{background:linear-gradient(90deg,var(--accent),var(--accent-light))}
+.h-bar-fill.success{background:linear-gradient(90deg,var(--success),#34d399)}
+.h-bar-fill.info{background:linear-gradient(90deg,var(--info),#60a5fa)}
 
 /* Tables */
-.table-wrapper{overflow-x:auto;border-radius:16px;border:1px solid rgba(255,255,255,.04)}
-table{width:100%;border-collapse:collapse;font-size:.85rem}
-thead th{background:var(--card2);color:var(--gray);font-weight:600;text-transform:uppercase;letter-spacing:.5px;font-size:.7rem;padding:.8rem 1rem;text-align:left;position:sticky;top:0}
-tbody td{padding:.7rem 1rem;border-bottom:1px solid rgba(255,255,255,.03);transition:background .2s}
-tbody tr:hover td{background:rgba(233,69,96,.04)}
-tbody tr:nth-child(even) td{background:rgba(255,255,255,.015)}
-.badge{display:inline-block;padding:.15rem .6rem;border-radius:20px;font-size:.7rem;font-weight:600;letter-spacing:.3px}
-.badge-a{background:rgba(233,69,96,.15);color:var(--red)}
-.badge-b{background:rgba(59,130,246,.15);color:var(--blue)}
-.badge-c{background:rgba(20,184,166,.15);color:var(--teal)}
-.badge-new{background:rgba(245,158,11,.15);color:var(--gold)}
-td.num{font-family:var(--font-mono);text-align:right}
+.table-wrapper{overflow-x:auto;border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);background:var(--bg-card)}
+table{width:100%;border-collapse:collapse;font-size:0.85rem}
+thead th{background:var(--bg);color:var(--text-light);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;font-size:0.7rem;padding:1rem 1.2rem;text-align:left;position:sticky;top:0;border-bottom:2px solid var(--border)}
+tbody td{padding:0.9rem 1.2rem;border-bottom:1px solid var(--border-light);transition:background 0.2s;color:var(--text)}
+tbody tr:hover td{background:var(--bg)}
+tbody tr:nth-child(even) td{background:var(--bg)}
+tbody tr:nth-child(even):hover td{background:#f0f4f8}
+.badge{display:inline-block;padding:0.3rem 0.8rem;border-radius:20px;font-size:0.7rem;font-weight:600;letter-spacing:0.3px}
+.badge-a{background:rgba(220,38,38,0.08);color:var(--danger)}
+.badge-b{background:rgba(59,130,246,0.08);color:var(--info)}
+.badge-c{background:rgba(16,185,129,0.08);color:var(--success)}
+.badge-new{background:rgba(245,158,11,0.08);color:var(--warning)}
+.badge-pending{background:rgba(107,114,128,0.08);color:var(--text-light)}
+td.num{font-family:var(--font-body);text-align:right;font-weight:500}
 td.center{text-align:center}
 
 /* Timeline */
 .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
-.timeline-card{background:var(--card);border-radius:16px;padding:1.8rem;position:relative;border:1px solid rgba(255,255,255,.04);overflow:hidden}
-.timeline-card .q-tag{font-family:var(--font-mono);font-size:.7rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem}
-.timeline-card .meta-val{font-family:var(--font-display);font-size:1.8rem;margin-bottom:.3rem}
-.timeline-card .meta-status{font-size:.75rem;color:var(--gray);margin-bottom:1rem}
-.timeline-card ul{list-style:none;font-size:.8rem;color:var(--gray)}
-.timeline-card ul li{padding:.25rem 0;padding-left:1rem;position:relative}
-.timeline-card ul li::before{content:'›';position:absolute;left:0;color:var(--red)}
-.timeline-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
-.timeline-card.q1::before{background:var(--green)}
-.timeline-card.q1 .q-tag{color:var(--green)}
-.timeline-card.q2::before{background:var(--gold)}
-.timeline-card.q2 .q-tag{color:var(--gold)}
-.timeline-card.q3::before{background:var(--blue)}
-.timeline-card.q3 .q-tag{color:var(--blue)}
-.timeline-card.q4::before{background:var(--red)}
-.timeline-card.q4 .q-tag{color:var(--red)}
+.timeline-card{background:var(--bg-card);border-radius:20px;padding:2rem;position:relative;border:1px solid var(--border);overflow:hidden;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);box-shadow:var(--shadow)}
+.timeline-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.timeline-card .q-tag{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.8rem;font-weight:600}
+.timeline-card .meta-val{font-family:var(--font-body);font-size:2rem;margin-bottom:0.3rem;font-weight:600}
+.timeline-card .meta-status{font-size:0.8rem;color:var(--text-light);margin-bottom:1.2rem;font-weight:500}
+.timeline-card ul{list-style:none;font-size:0.85rem;color:var(--text-light)}
+.timeline-card ul li{padding:0.35rem 0;padding-left:1.2rem;position:relative}
+.timeline-card ul li::before{content:'›';position:absolute;left:0;color:var(--accent);font-weight:700;font-size:1.1rem}
+.timeline-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.timeline-card.q1::before{background:var(--success)}
+.timeline-card.q1 .q-tag{color:var(--success)}
+.timeline-card.q2::before{background:var(--warning)}
+.timeline-card.q2 .q-tag{color:var(--warning)}
+.timeline-card.q3::before{background:var(--info)}
+.timeline-card.q3 .q-tag{color:var(--info)}
+.timeline-card.q4::before{background:var(--primary)}
+.timeline-card.q4 .q-tag{color:var(--primary)}
 
 /* Opportunity cards */
-.opp-card{background:var(--card);border-radius:16px;padding:2rem;border-left:4px solid;position:relative}
-.opp-card.cross{border-color:var(--red)}
-.opp-card.up{border-color:var(--green)}
-.opp-card h3{font-family:var(--font-display);font-size:1.2rem;margin-bottom:1rem}
-.opp-card .item{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:.85rem}
+.opp-card{background:var(--bg-card);border-radius:20px;padding:2rem;border-left:4px solid;position:relative;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);box-shadow:var(--shadow)}
+.opp-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.opp-card.cross{border-color:var(--danger)}
+.opp-card.up{border-color:var(--success)}
+.opp-card h3{font-family:var(--font-display);font-size:1.2rem;margin-bottom:1rem;color:var(--primary)}
+.opp-card .item{display:flex;justify-content:space-between;align-items:center;padding:0.7rem 0;border-bottom:1px solid var(--border-light);font-size:0.9rem}
 .opp-card .item:last-child{border:none}
-.opp-card .item .name{color:var(--gray)}
-.opp-card .item .val{font-family:var(--font-mono);color:var(--white)}
+.opp-card .item .name{color:var(--text-light);font-weight:500}
+.opp-card .item .val{font-family:var(--font-body);color:var(--text);font-weight:600}
+.opp-card .highlight-box{margin-top:1.2rem;padding:1.2rem;background:var(--bg);border-radius:12px;border:1px solid var(--border-light)}
+.opp-card .highlight-box strong{font-size:0.85rem;display:block;margin-bottom:0.4rem}
+.opp-card .highlight-box p{color:var(--text-light);font-size:0.8rem;line-height:1.6}
 
-/* Pedido section */
-.pedido-total{background:linear-gradient(135deg,var(--red),#c13550);border-radius:16px;padding:2.5rem;text-align:center;margin-top:2rem}
-.pedido-total .amount{font-family:var(--font-display);font-size:3rem;margin-bottom:.5rem}
-.pedido-total .sub{color:rgba(255,255,255,.7);font-size:.9rem}
+/* Pedido total */
+.pedido-total{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);border-radius:20px;padding:3rem;text-align:center;margin-top:2.5rem;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+.pedido-total::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,0.1) 0%,transparent 50%);pointer-events:none}
+.pedido-total .amount{font-family:var(--font-body);font-size:3.5rem;margin-bottom:0.5rem;color:#fff;font-weight:600;position:relative;z-index:1}
+.pedido-total .sub{color:rgba(255,255,255,0.8);font-size:0.95rem;position:relative;z-index:1;font-weight:400}
 
-/* Category header rows */
-.cat-header td{background:var(--card2) !important;font-weight:700;color:var(--white);font-size:.8rem;letter-spacing:.5px;text-transform:uppercase;padding:.6rem 1rem !important}
-.cat-header.a td{border-left:3px solid var(--red)}
-.cat-header.b td{border-left:3px solid var(--blue)}
-.cat-header.c td{border-left:3px solid var(--teal)}
-.cat-header.new td{border-left:3px solid var(--gold)}
+/* Category headers */
+.cat-header td{background:var(--bg) !important;font-weight:700;color:var(--primary);font-size:0.75rem;letter-spacing:0.5px;text-transform:uppercase;padding:0.8rem 1.2rem !important;border-bottom:2px solid var(--border)}
+.cat-header.a td{border-left:4px solid var(--danger)}
+.cat-header.b td{border-left:4px solid var(--info)}
+.cat-header.c td{border-left:4px solid var(--success)}
+.cat-header.new td{border-left:4px solid var(--warning)}
+
+/* Footer */
+.footer-section{padding:4rem 4rem;text-align:center;background:var(--primary);color:#fff;position:relative}
+.footer-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+.footer-section p{font-size:0.9rem;color:rgba(255,255,255,0.8);position:relative;z-index:1}
+.footer-section p:last-child{font-size:0.75rem;color:rgba(255,255,255,0.5);margin-top:0.5rem}
+
+/* Animation on scroll */
+.fade-in{opacity:0;transform:translateY(40px);transition:opacity 0.8s cubic-bezier(0.4,0,0.2,1),transform 0.8s cubic-bezier(0.4,0,0.2,1)}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* Growth indicators */
+.growth-positive{color:var(--success);font-weight:600}
+.growth-negative{color:var(--danger);font-weight:600}
+
+/* Números elegantes nos cards */
+.card .num-elegant{font-family:var(--font-body);font-weight:600;letter-spacing:-0.02em}
+
+/* Mini charts */
+.mini-chart{height:80px;margin-top:1.5rem;width:100%}
+.sparkline{stroke:var(--accent);stroke-width:2;fill:none;stroke-linecap:round}
+.sparkline-dot{fill:var(--accent)}
+
+/* Cards melhorados */
+.card{min-height:280px}
+.card h3{margin-bottom:1.2rem}
+
+/* Progress dots */
+.progress-dots{display:flex;gap:4px;margin-top:1rem}
+.progress-dot{flex:1;height:6px;border-radius:3px;background:var(--border-light);transition:background 0.3s}
+.progress-dot.active{background:var(--accent)}
 
 /* Print styles */
 @media print{
   nav{display:none}
-  body{background:#fff;color:#1a1a2e}
-  .card,.chart-container,.stat-card,.timeline-card,.opp-card{background:#f8fafc;border:1px solid #e2e8f0}
-  .stat-card .value,.stat-card.accent .value,.stat-card.green .value{color:#1a1a2e}
-  .stat-card .label,.card p,.desc,.bar-label{color:#64748b}
-  section{padding:2rem;page-break-inside:avoid}
-  body::before{display:none}
+  body{background:#fff;color:var(--text)}
+  .card,.chart-container,.stat-card,.timeline-card,.opp-card{background:#fff;border:1px solid #e5e7eb;box-shadow:none}
+  section{padding:2rem;page-break-inside:avoid;background:#fff}
+  .hero{background:#fff}
+  .footer-section{background:var(--primary)}
 }
 
 /* Responsive */
-@media(max-width:900px){
-  .hero{padding:5rem 1.5rem 2rem}
-  section{padding:3rem 1.5rem}
-  .stats-row,.grid-2,.grid-4,.timeline{grid-template-columns:1fr}
-  .grid-3{grid-template-columns:1fr}
-  nav ul{display:none}
+@media(max-width:1024px){
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .timeline{grid-template-columns:repeat(2,1fr)}
 }
-
-/* Animation on scroll */
-.fade-in{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
-.fade-in.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){
+  .hero{padding:6rem 1.5rem 3rem}
+  section{padding:3rem 1.5rem}
+  .stats-row,.grid-2,.grid-3,.grid-4,.timeline{grid-template-columns:1fr}
+  nav{padding:0.8rem 1.5rem}
+  nav ul{display:none}
+  .hero h1{font-size:2.2rem}
+  section h2{font-size:1.8rem}
+}
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="logo">PHX <span>Instrumentos</span></div>
+<nav id="navbar">
+  <div class="logo"><img src="data:image/png;base64,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" alt="PHX Instrumentos" style="height:36px;width:auto;object-fit:contain;"></div>
   <ul>
     <li><a href="#resumo">Resumo</a></li>
     <li><a href="#evolucao">Evolução</a></li>
@@ -191,195 +239,273 @@ td.center{text-align:center}
 
 <!-- HERO -->
 <div class="hero" id="resumo">
-  <div class="hero-tag">Reunião Estratégica — Março 2026</div>
-  <h1><em>Magazine Pro</em><br>Plano de Negócios &<br>Parceria Estratégica</h1>
-  <p class="subtitle">Análise completa de 4 anos de parceria, projeções de crescimento e plano de ação até Dezembro de 2026.</p>
-  
-  <div class="stats-row">
-    <div class="stat-card accent">
-      <div class="value">R$ 3,1M</div>
-      <div class="label">Faturamento Total</div>
-    </div>
-    <div class="stat-card green">
-      <div class="value" style="font-size:1.4rem;line-height:1.2">Key<br>Account</div>
-      <div class="label">Parceiro Estratégico</div>
-    </div>
-    <div class="stat-card gold">
-      <div class="value">R$ 87K</div>
-      <div class="label">Pedido Fev/26</div>
-    </div>
-    <div class="stat-card blue">
-      <div class="value">254</div>
-      <div class="label">Notas Fiscais</div>
+  <div class="hero-content">
+    <div class="hero-tag">Reunião Estratégica — Março 2026</div>
+    <h1><em>Magazine Pro</em><br>Plano de Negócios &<br>Parceria Estratégica</h1>
+    <p class="subtitle">Análise completa de 4 anos de parceria, projeções de crescimento e plano de ação até Dezembro de 2026.</p>
+    
+    <div class="stats-row">
+      <div class="stat-card accent">
+        <div class="value">R$ 3,1M</div>
+        <div class="label">Faturamento Total</div>
+      </div>
+      <div class="stat-card success">
+        <div class="value" style="font-size:1.6rem;line-height:1.3">Key<br>Account</div>
+        <div class="label">Parceiro Estratégico</div>
+      </div>
+      <div class="stat-card">
+        <div class="value" style="color:var(--accent)">R$ 87K</div>
+        <div class="label">Pedido Fev/26</div>
+      </div>
+      <div class="stat-card info">
+        <div class="value">254</div>
+        <div class="label">Notas Fiscais</div>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- EVOLUÇÃO -->
 <section id="evolucao" class="fade-in">
-  <div class="section-tag">Histórico</div>
-  <h2>Evolução de Faturamento</h2>
-  <p class="desc">Crescimento de +78% (2022→2023) e +68% (2023→2024). Ticket médio em 2026 é o maior da história: R$ 34.445 por pedido.</p>
+  <div class="section-header">
+    <div class="section-tag">Histórico</div>
+    <h2>Evolução de Faturamento</h2>
+    <p class="desc">Crescimento de +78% (2022→2023) e +68% (2023→2024). Ticket médio em 2026 é o maior da história: R$ 34.445 por pedido.</p>
+  </div>
   
-  <!-- Full width chart -->
   <div class="chart-container" style="margin-bottom:2rem">
-    <div style="font-size:.8rem;color:var(--gray);margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px">Faturamento Anual (R$ mil)</div>
+    <div class="chart-title">Faturamento Anual (R$ mil)</div>
     <svg viewBox="0 0 900 280" style="width:100%;height:auto;overflow:visible">
       <defs>
-        <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e94560"/><stop offset="100%" stop-color="#0f3460"/></linearGradient>
-        <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#b45309"/></linearGradient>
+        <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1e3a5f"/><stop offset="100%" stop-color="#3b5998"/></linearGradient>
+        <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c9a227"/><stop offset="100%" stop-color="#d4b43a"/></linearGradient>
       </defs>
       <!-- Grid lines -->
-      <line x1="55" y1="20" x2="880" y2="20" stroke="#1c1c35" stroke-width="1"/>
-      <line x1="55" y1="65" x2="880" y2="65" stroke="#1c1c35" stroke-width="1"/>
-      <line x1="55" y1="110" x2="880" y2="110" stroke="#1c1c35" stroke-width="1"/>
-      <line x1="55" y1="155" x2="880" y2="155" stroke="#1c1c35" stroke-width="1"/>
-      <line x1="55" y1="200" x2="880" y2="200" stroke="#1c1c35" stroke-width="1"/>
+      <line x1="55" y1="20" x2="880" y2="20" stroke="#e5e7eb" stroke-width="1"/>
+      <line x1="55" y1="65" x2="880" y2="65" stroke="#e5e7eb" stroke-width="1"/>
+      <line x1="55" y1="110" x2="880" y2="110" stroke="#e5e7eb" stroke-width="1"/>
+      <line x1="55" y1="155" x2="880" y2="155" stroke="#e5e7eb" stroke-width="1"/>
+      <line x1="55" y1="200" x2="880" y2="200" stroke="#e5e7eb" stroke-width="1"/>
       <!-- Y axis -->
-      <text x="48" y="24" fill="#64748b" font-size="10" text-anchor="end" font-family="JetBrains Mono,monospace">1.300</text>
-      <text x="48" y="69" fill="#64748b" font-size="10" text-anchor="end" font-family="JetBrains Mono,monospace">1.000</text>
-      <text x="48" y="114" fill="#64748b" font-size="10" text-anchor="end" font-family="JetBrains Mono,monospace">700</text>
-      <text x="48" y="159" fill="#64748b" font-size="10" text-anchor="end" font-family="JetBrains Mono,monospace">400</text>
-      <text x="48" y="204" fill="#64748b" font-size="10" text-anchor="end" font-family="JetBrains Mono,monospace">100</text>
+      <text x="48" y="24" fill="#6b7280" font-size="10" text-anchor="end" font-family="Inter,sans-serif">1.300</text>
+      <text x="48" y="69" fill="#6b7280" font-size="10" text-anchor="end" font-family="Inter,sans-serif">1.000</text>
+      <text x="48" y="114" fill="#6b7280" font-size="10" text-anchor="end" font-family="Inter,sans-serif">700</text>
+      <text x="48" y="159" fill="#6b7280" font-size="10" text-anchor="end" font-family="Inter,sans-serif">400</text>
+      <text x="48" y="204" fill="#6b7280" font-size="10" text-anchor="end" font-family="Inter,sans-serif">100</text>
       <!-- Baseline -->
-      <line x1="55" y1="225" x2="880" y2="225" stroke="#334155" stroke-width="1.5"/>
+      <line x1="55" y1="225" x2="880" y2="225" stroke="#d1d5db" stroke-width="1.5"/>
       
-      <!-- Bars - wider, better spaced across 900px -->
+      <!-- Bars -->
       <!-- 2022: 415K -->
-      <rect x="95" y="152" width="120" height="73" rx="6" fill="url(#g1)" opacity="0.85">
-        <animate attributeName="height" from="0" to="73" dur=".8s" fill="freeze"/>
-        <animate attributeName="y" from="225" to="152" dur=".8s" fill="freeze"/>
+      <rect x="95" y="152" width="120" height="73" rx="8" fill="url(#g1)" opacity="0.85">
+        <animate attributeName="height" from="0" to="73" dur="0.8s" fill="freeze"/>
+        <animate attributeName="y" from="225" to="152" dur="0.8s" fill="freeze"/>
       </rect>
-      <text x="155" y="142" fill="#f8fafc" font-size="14" text-anchor="middle" font-weight="700" font-family="JetBrains Mono,monospace">R$ 415K</text>
-      <text x="155" y="244" fill="#94a3b8" font-size="12" text-anchor="middle" font-family="DM Sans,sans-serif">2022</text>
+      <text x="155" y="142" fill="#1f2937" font-size="14" text-anchor="middle" font-weight="700" font-family="Inter,sans-serif">R$ 415K</text>
+      <text x="155" y="244" fill="#6b7280" font-size="12" text-anchor="middle" font-family="Inter,sans-serif">2022</text>
       
       <!-- 2023: 739K -->
-      <rect x="255" y="97" width="120" height="128" rx="6" fill="url(#g1)" opacity="0.9">
+      <rect x="255" y="97" width="120" height="128" rx="8" fill="url(#g1)" opacity="0.9">
         <animate attributeName="height" from="0" to="128" dur="1s" fill="freeze"/>
         <animate attributeName="y" from="225" to="97" dur="1s" fill="freeze"/>
       </rect>
-      <text x="315" y="87" fill="#f8fafc" font-size="14" text-anchor="middle" font-weight="700" font-family="JetBrains Mono,monospace">R$ 739K</text>
-      <text x="315" y="244" fill="#94a3b8" font-size="12" text-anchor="middle" font-family="DM Sans,sans-serif">2023</text>
+      <text x="315" y="87" fill="#1f2937" font-size="14" text-anchor="middle" font-weight="700" font-family="Inter,sans-serif">R$ 739K</text>
+      <text x="315" y="244" fill="#6b7280" font-size="12" text-anchor="middle" font-family="Inter,sans-serif">2023</text>
       <!-- Growth arrow -->
-      <text x="235" y="130" fill="#10b981" font-size="11" text-anchor="middle" font-weight="600" font-family="JetBrains Mono,monospace">+78%</text>
+      <text x="235" y="130" fill="#10b981" font-size="11" text-anchor="middle" font-weight="600" font-family="Inter,sans-serif">+78%</text>
       
       <!-- 2024: 1245K (peak) -->
-      <rect x="415" y="12" width="120" height="213" rx="6" fill="url(#g1)">
+      <rect x="415" y="12" width="120" height="213" rx="8" fill="url(#g1)">
         <animate attributeName="height" from="0" to="213" dur="1.2s" fill="freeze"/>
         <animate attributeName="y" from="225" to="12" dur="1.2s" fill="freeze"/>
       </rect>
-      <text x="475" y="6" fill="#e94560" font-size="15" text-anchor="middle" font-weight="700" font-family="JetBrains Mono,monospace">R$ 1.245K</text>
-      <text x="475" y="244" fill="#f8fafc" font-size="13" text-anchor="middle" font-weight="600" font-family="DM Sans,sans-serif">2024 ★</text>
-      <text x="395" y="60" fill="#10b981" font-size="11" text-anchor="middle" font-weight="600" font-family="JetBrains Mono,monospace">+69%</text>
+      <text x="475" y="6" fill="#c9a227" font-size="15" text-anchor="middle" font-weight="700" font-family="Inter,sans-serif">R$ 1.245K</text>
+      <text x="475" y="244" fill="#1e3a5f" font-size="13" text-anchor="middle" font-weight="600" font-family="Inter,sans-serif">2024 ★</text>
+      <text x="395" y="60" fill="#10b981" font-size="11" text-anchor="middle" font-weight="600" font-family="Inter,sans-serif">+69%</text>
       
       <!-- 2025: 616K -->
-      <rect x="575" y="118" width="120" height="107" rx="6" fill="url(#g1)" opacity="0.85">
+      <rect x="575" y="118" width="120" height="107" rx="8" fill="url(#g1)" opacity="0.85">
         <animate attributeName="height" from="0" to="107" dur="1.4s" fill="freeze"/>
         <animate attributeName="y" from="225" to="118" dur="1.4s" fill="freeze"/>
       </rect>
-      <text x="635" y="108" fill="#f8fafc" font-size="14" text-anchor="middle" font-weight="700" font-family="JetBrains Mono,monospace">R$ 616K</text>
-      <text x="635" y="244" fill="#94a3b8" font-size="12" text-anchor="middle" font-family="DM Sans,sans-serif">2025</text>
-      <text x="555" y="75" fill="#e94560" font-size="11" text-anchor="middle" font-weight="600" font-family="JetBrains Mono,monospace">-51%</text>
+      <text x="635" y="108" fill="#1f2937" font-size="14" text-anchor="middle" font-weight="700" font-family="Inter,sans-serif">R$ 616K</text>
+      <text x="635" y="244" fill="#6b7280" font-size="12" text-anchor="middle" font-family="Inter,sans-serif">2025</text>
+      <text x="555" y="75" fill="#dc2626" font-size="11" text-anchor="middle" font-weight="600" font-family="Inter,sans-serif">-51%</text>
       
       <!-- 2026: 103K (partial) -->
-      <rect x="735" y="207" width="120" height="18" rx="6" fill="url(#g2)">
+      <rect x="735" y="207" width="120" height="18" rx="8" fill="url(#g2)">
         <animate attributeName="height" from="0" to="18" dur="1.6s" fill="freeze"/>
         <animate attributeName="y" from="225" to="207" dur="1.6s" fill="freeze"/>
       </rect>
       <!-- Projected dashed outline -->
-      <rect x="735" y="90" width="120" height="135" rx="6" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="6 4" opacity=".4"/>
-      <text x="795" y="83" fill="#f59e0b" font-size="11" text-anchor="middle" font-family="JetBrains Mono,monospace" opacity=".6">~R$ 802K?</text>
-      <text x="795" y="198" fill="#f59e0b" font-size="14" text-anchor="middle" font-weight="700" font-family="JetBrains Mono,monospace">R$ 103K*</text>
-      <text x="795" y="244" fill="#f59e0b" font-size="12" text-anchor="middle" font-family="DM Sans,sans-serif">2026*</text>
+      <rect x="735" y="90" width="120" height="135" rx="8" fill="none" stroke="#c9a227" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.4"/>
+      <text x="795" y="83" fill="#c9a227" font-size="11" text-anchor="middle" font-family="Inter,sans-serif" opacity="0.6">~R$ 802K?</text>
+      <text x="795" y="198" fill="#c9a227" font-size="14" text-anchor="middle" font-weight="700" font-family="Inter,sans-serif">R$ 103K*</text>
+      <text x="795" y="244" fill="#c9a227" font-size="12" text-anchor="middle" font-family="Inter,sans-serif">2026*</text>
     </svg>
-    <div style="font-size:.7rem;color:var(--gray2);margin-top:.3rem">*2026: dados até Fev/26 — linha tracejada = projeção moderada</div>
+    <div style="font-size:0.75rem;color:var(--text-light);margin-top:0.8rem;font-style:italic">*2026: dados até Fev/26 — linha tracejada = projeção moderada</div>
   </div>
   
-  <!-- 4 cards below - 2x2 grid -->
+  <!-- 4 cards below - REDESENHADOS -->
   <div class="grid-2">
-    <div class="card">
-      <h3 style="font-size:1.1rem">📈 Crescimento</h3>
-      <div style="display:flex;flex-direction:column;gap:.6rem;margin-top:.8rem">
-        <div style="display:flex;justify-content:space-between"><span style="color:var(--gray)">2022 → 2023</span><span style="color:var(--green);font-family:var(--font-mono);font-weight:600">+78%</span></div>
-        <div style="display:flex;justify-content:space-between"><span style="color:var(--gray)">2023 → 2024</span><span style="color:var(--green);font-family:var(--font-mono);font-weight:600">+69%</span></div>
-        <div style="display:flex;justify-content:space-between"><span style="color:var(--gray)">2024 → 2025</span><span style="color:var(--red);font-family:var(--font-mono);font-weight:600">-51%</span></div>
+    <!-- CARD 1: Crescimento Histórico -->
+    <div class="card" style="padding:2.5rem;display:flex;flex-direction:column;justify-content:space-between;min-height:320px">
+      <div>
+        <h3 style="font-size:1.4rem;margin-bottom:1.5rem">📈 Crescimento Histórico</h3>
+        <div style="display:flex;flex-direction:column;gap:1.2rem">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.8rem 1rem;background:var(--bg);border-radius:10px">
+            <span style="color:var(--text-light);font-size:1rem;font-weight:500">2022 → 2023</span>
+            <span style="font-family:var(--font-body);font-weight:600;font-size:1.3rem;color:var(--success)">+78%</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.8rem 1rem;background:var(--bg);border-radius:10px">
+            <span style="color:var(--text-light);font-size:1rem;font-weight:500">2023 → 2024</span>
+            <span style="font-family:var(--font-body);font-weight:600;font-size:1.3rem;color:var(--success)">+69%</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.8rem 1rem;background:var(--bg);border-radius:10px">
+            <span style="color:var(--text-light);font-size:1rem;font-weight:500">2024 → 2025</span>
+            <span style="font-family:var(--font-body);font-weight:600;font-size:1.3rem;color:var(--danger)">-51%</span>
+          </div>
+        </div>
       </div>
-      <!-- Mini sparkline -->
-      <svg viewBox="0 0 200 50" style="width:100%;margin-top:.8rem">
-        <polyline points="10,38 55,28 100,5 145,22 190,45" fill="none" stroke="#e94560" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="100" cy="5" r="4" fill="#e94560"/>
-        <text x="100" y="48" fill="#64748b" font-size="8" text-anchor="middle" font-family="DM Sans">Pico 2024</text>
+      <!-- Sparkline maior -->
+      <svg viewBox="0 0 280 80" style="width:100%;height:80px;margin-top:1.5rem">
+        <defs>
+          <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#c9a227" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#c9a227" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <path d="M 15,65 L 75,50 L 140,15 L 205,40 L 265,70 L 265,80 L 15,80 Z" fill="url(#sparkGrad)"/>
+        <polyline points="15,65 75,50 140,15 205,40 265,70" fill="none" stroke="#c9a227" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="140" cy="15" r="6" fill="#c9a227" stroke="#fff" stroke-width="2"/>
+        <text x="140" y="10" fill="#c9a227" font-size="11" text-anchor="middle" font-family="Inter" font-weight="600">Pico 2024</text>
       </svg>
     </div>
     
-    <div class="card" style="border:1px solid rgba(233,69,96,.15)">
-      <h3 style="font-size:1.1rem">🎯 Projeção 2026</h3>
-      <p style="font-size:.85rem;color:var(--gray);margin-top:.3rem">Jan+Fev = R$ 103K</p>
-      <div style="display:flex;flex-direction:column;gap:.5rem;margin-top:.8rem">
-        <div style="display:flex;justify-content:space-between"><span style="color:var(--gray)">Conservador</span><span style="font-family:var(--font-mono)">R$ 628K</span></div>
-        <div style="display:flex;justify-content:space-between"><span style="color:var(--gold);font-weight:500">Moderado</span><span style="font-family:var(--font-mono);color:var(--gold)">R$ 802K</span></div>
-        <div style="display:flex;justify-content:space-between"><span style="color:var(--green);font-weight:500">Otimista</span><span style="font-family:var(--font-mono);color:var(--green);font-weight:700">R$ 977K</span></div>
+    <!-- CARD 2: Projeção 2026 -->
+    <div class="card" style="padding:2.5rem;border:2px solid var(--accent);min-height:320px;display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <h3 style="font-size:1.4rem;margin-bottom:0.5rem">🎯 Projeção 2026</h3>
+        <p style="font-size:0.95rem;color:var(--text-light);margin-bottom:1.5rem">Jan+Fev = R$ 103K realizado</p>
+        
+        <div style="display:flex;flex-direction:column;gap:1rem">
+          <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--bg);border-radius:12px">
+            <div style="width:12px;height:12px;border-radius:50%;background:var(--text-light)"></div>
+            <div style="flex:1">
+              <div style="font-size:0.85rem;color:var(--text-light)">Conservador</div>
+              <div style="font-family:var(--font-body);font-size:1.4rem;color:var(--text);font-weight:600">R$ 628K</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:linear-gradient(135deg,rgba(201,162,39,0.1),rgba(201,162,39,0.05));border-radius:12px;border:1px solid var(--accent)">
+            <div style="width:12px;height:12px;border-radius:50%;background:var(--accent)"></div>
+            <div style="flex:1">
+              <div style="font-size:0.85rem;color:var(--accent);font-weight:600">Moderado ★</div>
+              <div style="font-family:var(--font-body);font-size:1.6rem;color:var(--accent);font-weight:700">R$ 802K</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--bg);border-radius:12px">
+            <div style="width:12px;height:12px;border-radius:50%;background:var(--success)"></div>
+            <div style="flex:1">
+              <div style="font-size:0.85rem;color:var(--success);font-weight:500">Otimista</div>
+              <div style="font-family:var(--font-body);font-size:1.4rem;color:var(--success);font-weight:600">R$ 977K</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- Progress dots -->
-      <div style="display:flex;gap:3px;margin-top:.8rem">
-        <div style="flex:1;height:6px;border-radius:3px;background:var(--red)"></div>
-        <div style="flex:1;height:6px;border-radius:3px;background:var(--red)"></div>
-        <div style="flex:1;height:6px;border-radius:3px;background:var(--card2)"></div>
-        <div style="flex:1;height:6px;border-radius:3px;background:var(--card2)"></div>
-        <div style="flex:1;height:6px;border-radius:3px;background:var(--card2)"></div>
-        <div style="flex:1;height:6px;border-radius:3px;background:var(--card2)"></div>
-        <div style="flex:1;height:6px;border-radius:3px;background:var(--card2)"></div>
-        <div style="flex:1;height:6px;border-radius:3px;background:var(--card2)"></div>
-        <div style="flex:1;height:6px;border-radius:3px;background:var(--card2)"></div>
-        <div style="flex:1;height:6px;border-radius:3px;background:var(--card2)"></div>
-        <div style="flex:1;height:6px;border-radius:3px;background:var(--card2)"></div>
-        <div style="flex:1;height:6px;border-radius:3px;background:var(--card2)"></div>
+      
+      <!-- Progress bar melhorado -->
+      <div style="margin-top:1.5rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+          <span style="font-size:0.85rem;color:var(--text-light)">Progresso anual</span>
+          <span style="font-size:0.85rem;color:var(--accent);font-weight:600">17%</span>
+        </div>
+        <div style="height:10px;background:var(--border-light);border-radius:5px;overflow:hidden">
+          <div style="width:17%;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));border-radius:5px"></div>
+        </div>
+        <div style="font-size:0.8rem;color:var(--text-light);margin-top:0.5rem">2 de 12 meses concluídos</div>
       </div>
-      <div style="font-size:.7rem;color:var(--gray2);margin-top:.3rem">2 de 12 meses concluídos</div>
     </div>
     
-    <div class="card">
-      <h3 style="font-size:1.1rem">🎫 Ticket Médio</h3>
-      <div style="display:flex;align-items:baseline;gap:.5rem;margin-top:.5rem">
-        <span style="font-family:var(--font-display);font-size:1.8rem;color:var(--gold)">R$ 34K</span>
-        <span style="font-size:.75rem;color:var(--green)">2026</span>
+    <!-- CARD 3: Ticket Médio -->
+    <div class="card" style="padding:2.5rem;min-height:320px;display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <h3 style="font-size:1.4rem;margin-bottom:1rem">🎫 Ticket Médio</h3>
+        <div style="display:flex;align-items:flex-end;gap:1rem;margin-bottom:1.5rem">
+          <span style="font-family:var(--font-body);font-size:3rem;color:var(--accent);font-weight:700;line-height:1">R$ 34.445</span>
+          <span style="font-size:0.9rem;color:var(--success);font-weight:600;background:rgba(16,185,129,0.1);padding:0.3rem 0.8rem;border-radius:20px;margin-bottom:0.5rem">2026</span>
+        </div>
+        <p style="font-size:0.9rem;color:var(--text-light);margin-bottom:1.5rem">Maior ticket médio da história da parceria</p>
       </div>
-      <!-- Mini bar chart ticket médio -->
-      <svg viewBox="0 0 200 70" style="width:100%;margin-top:.5rem">
-        <rect x="8" y="34" width="28" height="26" rx="3" fill="#0f3460" opacity=".7"/>
-        <text x="22" y="30" fill="#64748b" font-size="7" text-anchor="middle" font-family="JetBrains Mono">12,6K</text>
-        <text x="22" y="68" fill="#64748b" font-size="7" text-anchor="middle">22</text>
+      
+      <!-- Gráfico de barras maior -->
+      <svg viewBox="0 0 400 140" style="width:100%;height:140px">
+        <!-- Barras -->
+        <rect x="20" y="70" width="55" height="55" rx="6" fill="#e5e7eb"/>
+        <rect x="90" y="85" width="55" height="40" rx="6" fill="#e5e7eb"/>
+        <rect x="160" y="55" width="55" height="70" rx="6" fill="#d1d5db"/>
+        <rect x="230" y="65" width="55" height="60" rx="6" fill="#e5e7eb"/>
+        <rect x="300" y="15" width="55" height="110" rx="6" fill="#c9a227"/>
         
-        <rect x="46" y="39" width="28" height="21" rx="3" fill="#0f3460" opacity=".6"/>
-        <text x="60" y="35" fill="#64748b" font-size="7" text-anchor="middle" font-family="JetBrains Mono">9,0K</text>
-        <text x="60" y="68" fill="#64748b" font-size="7" text-anchor="middle">23</text>
+        <!-- Valores -->
+        <text x="47" y="62" fill="#6b7280" font-size="13" text-anchor="middle" font-family="Inter" font-weight="600">12,6K</text>
+        <text x="117" y="77" fill="#6b7280" font-size="13" text-anchor="middle" font-family="Inter" font-weight="600">9,0K</text>
+        <text x="187" y="47" fill="#6b7280" font-size="13" text-anchor="middle" font-family="Inter" font-weight="600">14,0K</text>
+        <text x="257" y="57" fill="#6b7280" font-size="13" text-anchor="middle" font-family="Inter" font-weight="600">13,1K</text>
+        <text x="327" y="8" fill="#c9a227" font-size="15" text-anchor="middle" font-family="Inter" font-weight="700">34,4K</text>
         
-        <rect x="84" y="31" width="28" height="29" rx="3" fill="#0f3460" opacity=".8"/>
-        <text x="98" y="27" fill="#94a3b8" font-size="7" text-anchor="middle" font-family="JetBrains Mono">14,0K</text>
-        <text x="98" y="68" fill="#64748b" font-size="7" text-anchor="middle">24</text>
-        
-        <rect x="122" y="33" width="28" height="27" rx="3" fill="#0f3460" opacity=".7"/>
-        <text x="136" y="29" fill="#64748b" font-size="7" text-anchor="middle" font-family="JetBrains Mono">13,1K</text>
-        <text x="136" y="68" fill="#64748b" font-size="7" text-anchor="middle">25</text>
-        
-        <rect x="160" y="5" width="28" height="55" rx="3" fill="#f59e0b"/>
-        <text x="174" y="3" fill="#f59e0b" font-size="8" text-anchor="middle" font-weight="700" font-family="JetBrains Mono">34,4K</text>
-        <text x="174" y="68" fill="#f59e0b" font-size="8" text-anchor="middle" font-weight="600">26</text>
+        <!-- Anos -->
+        <text x="47" y="138" fill="#9ca3af" font-size="13" text-anchor="middle" font-family="Inter" font-weight="500">2022</text>
+        <text x="117" y="138" fill="#9ca3af" font-size="13" text-anchor="middle" font-family="Inter" font-weight="500">2023</text>
+        <text x="187" y="138" fill="#9ca3af" font-size="13" text-anchor="middle" font-family="Inter" font-weight="500">2024</text>
+        <text x="257" y="138" fill="#9ca3af" font-size="13" text-anchor="middle" font-family="Inter" font-weight="500">2025</text>
+        <text x="327" y="138" fill="#c9a227" font-size="13" text-anchor="middle" font-family="Inter" font-weight="600">2026</text>
       </svg>
     </div>
     
-    <div class="card">
-      <h3 style="font-size:1.1rem">📦 Volume de Pedidos</h3>
-      <div style="display:flex;flex-direction:column;gap:.5rem;margin-top:.8rem">
-        <div style="display:flex;justify-content:space-between"><span style="color:var(--gray)">2022</span><span style="font-family:var(--font-mono)">33 NFs</span></div>
-        <div style="display:flex;justify-content:space-between"><span style="color:var(--gray)">2023</span><span style="font-family:var(--font-mono)">82 NFs</span></div>
-        <div style="display:flex;justify-content:space-between"><span style="color:var(--gray)">2024</span><span style="font-family:var(--font-mono);color:var(--green)">89 NFs</span></div>
-        <div style="display:flex;justify-content:space-between"><span style="color:var(--gray)">2025</span><span style="font-family:var(--font-mono)">47 NFs</span></div>
-        <div style="display:flex;justify-content:space-between;padding-top:.3rem;border-top:1px solid rgba(255,255,255,.05)"><span style="color:var(--gold);font-weight:600">2026</span><span style="font-family:var(--font-mono);color:var(--gold)">3 NFs</span></div>
+    <!-- CARD 4: Volume de Pedidos -->
+    <div class="card" style="padding:2.5rem;min-height:320px;display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <h3 style="font-size:1.4rem;margin-bottom:1.5rem">📦 Volume de Pedidos</h3>
+        
+        <!-- Grid de anos -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem">
+          <div style="text-align:center;padding:1rem;background:var(--bg);border-radius:12px">
+            <div style="font-size:0.8rem;color:var(--text-light);margin-bottom:0.3rem">2022</div>
+            <div style="font-family:var(--font-body);font-size:1.6rem;color:var(--text);font-weight:600">33</div>
+            <div style="font-size:0.7rem;color:var(--text-lighter)">NFs</div>
+          </div>
+          <div style="text-align:center;padding:1rem;background:var(--bg);border-radius:12px">
+            <div style="font-size:0.8rem;color:var(--text-light);margin-bottom:0.3rem">2023</div>
+            <div style="font-family:var(--font-body);font-size:1.6rem;color:var(--text);font-weight:600">82</div>
+            <div style="font-size:0.7rem;color:var(--text-lighter)">NFs</div>
+          </div>
+          <div style="text-align:center;padding:1rem;background:linear-gradient(135deg,rgba(16,185,129,0.1),rgba(16,185,129,0.05));border-radius:12px;border:1px solid rgba(16,185,129,0.2)">
+            <div style="font-size:0.8rem;color:var(--success);margin-bottom:0.3rem;font-weight:500">2024 ★</div>
+            <div style="font-family:var(--font-body);font-size:1.6rem;color:var(--success);font-weight:600">89</div>
+            <div style="font-size:0.7rem;color:var(--success)">NFs</div>
+          </div>
+          <div style="text-align:center;padding:1rem;background:var(--bg);border-radius:12px">
+            <div style="font-size:0.8rem;color:var(--text-light);margin-bottom:0.3rem">2025</div>
+            <div style="font-family:var(--font-body);font-size:1.6rem;color:var(--text);font-weight:600">47</div>
+            <div style="font-size:0.7rem;color:var(--text-lighter)">NFs</div>
+          </div>
+          <div style="text-align:center;padding:1rem;background:linear-gradient(135deg,rgba(201,162,39,0.1),rgba(201,162,39,0.05));border-radius:12px;border:1px solid rgba(201,162,39,0.2)">
+            <div style="font-size:0.8rem;color:var(--accent);margin-bottom:0.3rem;font-weight:500">2026</div>
+            <div style="font-family:var(--font-body);font-size:1.6rem;color:var(--accent);font-weight:600">3</div>
+            <div style="font-size:0.7rem;color:var(--accent)">NFs</div>
+          </div>
+          <div style="text-align:center;padding:1rem;background:linear-gradient(135deg,var(--primary),var(--primary-light));border-radius:12px">
+            <div style="font-size:0.8rem;color:rgba(255,255,255,0.7);margin-bottom:0.3rem">Total</div>
+            <div style="font-family:var(--font-body);font-size:1.6rem;color:#fff;font-weight:600">254</div>
+            <div style="font-size:0.7rem;color:rgba(255,255,255,0.7)">NFs</div>
+          </div>
+        </div>
       </div>
-      <div style="margin-top:.6rem;padding:.6rem;background:rgba(233,69,96,.06);border-radius:8px">
-        <span style="font-size:.8rem;color:var(--gray)">Total histórico</span>
-        <span style="font-family:var(--font-display);font-size:1.2rem;color:var(--white);display:block;margin-top:.1rem">254 pedidos</span>
+      
+      <!-- Insight adicional -->
+      <div style="padding:1rem;background:var(--bg);border-radius:10px;border-left:3px solid var(--accent)">
+        <div style="font-size:0.8rem;color:var(--text-light)">Média por ano</div>
+        <div style="font-family:var(--font-body);font-size:1.4rem;color:var(--primary);font-weight:600">51 <span style="font-size:0.9rem">NFs/ano</span></div>
       </div>
     </div>
   </div>
@@ -387,52 +513,56 @@ td.center{text-align:center}
 
 <!-- SAZONALIDADE -->
 <section id="sazonalidade" class="fade-in">
-  <div class="section-tag">Padrões</div>
-  <h2>Sazonalidade de Compras</h2>
-  <p class="desc">Média mensal histórica identifica os picos de demanda: Abril, Setembro, Outubro e Dezembro são os meses mais fortes.</p>
+  <div class="section-header">
+    <div class="section-tag">Padrões</div>
+    <h2>Sazonalidade de Compras</h2>
+    <p class="desc">Média mensal histórica identifica os picos de demanda: Abril, Setembro, Outubro e Dezembro são os meses mais fortes.</p>
+  </div>
   
   <div class="chart-container">
     <div class="h-bar-chart">
-      <div class="h-bar-row"><div class="h-bar-label">Janeiro</div><div class="h-bar-track"><div class="h-bar-fill blue" style="width:75%">R$ 75K</div></div></div>
-      <div class="h-bar-row"><div class="h-bar-label">Fevereiro</div><div class="h-bar-track"><div class="h-bar-fill blue" style="width:82%">R$ 82K</div></div></div>
-      <div class="h-bar-row"><div class="h-bar-label">Março</div><div class="h-bar-track"><div class="h-bar-fill blue" style="width:27%">R$ 27K</div></div></div>
-      <div class="h-bar-row"><div class="h-bar-label">Abril</div><div class="h-bar-track"><div class="h-bar-fill red" style="width:85%">R$ 85K ★</div></div></div>
-      <div class="h-bar-row"><div class="h-bar-label">Maio</div><div class="h-bar-track"><div class="h-bar-fill blue" style="width:45%">R$ 45K</div></div></div>
-      <div class="h-bar-row"><div class="h-bar-label">Junho</div><div class="h-bar-track"><div class="h-bar-fill blue" style="width:50%">R$ 50K</div></div></div>
-      <div class="h-bar-row"><div class="h-bar-label">Julho</div><div class="h-bar-track"><div class="h-bar-fill blue" style="width:51%">R$ 51K</div></div></div>
-      <div class="h-bar-row"><div class="h-bar-label">Agosto</div><div class="h-bar-track"><div class="h-bar-fill blue" style="width:69%">R$ 69K</div></div></div>
-      <div class="h-bar-row"><div class="h-bar-label">Setembro</div><div class="h-bar-track"><div class="h-bar-fill red" style="width:90%">R$ 90K ★</div></div></div>
-      <div class="h-bar-row"><div class="h-bar-label">Outubro</div><div class="h-bar-track"><div class="h-bar-fill red" style="width:87%">R$ 87K ★</div></div></div>
-      <div class="h-bar-row"><div class="h-bar-label">Novembro</div><div class="h-bar-track"><div class="h-bar-fill blue" style="width:36%">R$ 36K</div></div></div>
-      <div class="h-bar-row"><div class="h-bar-label">Dezembro</div><div class="h-bar-track"><div class="h-bar-fill gold" style="width:100%">R$ 100K ★★</div></div></div>
+      <div class="h-bar-row"><div class="h-bar-label">Janeiro</div><div class="h-bar-track"><div class="h-bar-fill info" style="width:75%">R$ 75K</div></div></div>
+      <div class="h-bar-row"><div class="h-bar-label">Fevereiro</div><div class="h-bar-track"><div class="h-bar-fill info" style="width:82%">R$ 82K</div></div></div>
+      <div class="h-bar-row"><div class="h-bar-label">Março</div><div class="h-bar-track"><div class="h-bar-fill info" style="width:27%">R$ 27K</div></div></div>
+      <div class="h-bar-row"><div class="h-bar-label">Abril</div><div class="h-bar-track"><div class="h-bar-fill accent" style="width:85%">R$ 85K ★</div></div></div>
+      <div class="h-bar-row"><div class="h-bar-label">Maio</div><div class="h-bar-track"><div class="h-bar-fill info" style="width:45%">R$ 45K</div></div></div>
+      <div class="h-bar-row"><div class="h-bar-label">Junho</div><div class="h-bar-track"><div class="h-bar-fill info" style="width:50%">R$ 50K</div></div></div>
+      <div class="h-bar-row"><div class="h-bar-label">Julho</div><div class="h-bar-track"><div class="h-bar-fill info" style="width:51%">R$ 51K</div></div></div>
+      <div class="h-bar-row"><div class="h-bar-label">Agosto</div><div class="h-bar-track"><div class="h-bar-fill info" style="width:69%">R$ 69K</div></div></div>
+      <div class="h-bar-row"><div class="h-bar-label">Setembro</div><div class="h-bar-track"><div class="h-bar-fill accent" style="width:90%">R$ 90K ★</div></div></div>
+      <div class="h-bar-row"><div class="h-bar-label">Outubro</div><div class="h-bar-track"><div class="h-bar-fill accent" style="width:87%">R$ 87K ★</div></div></div>
+      <div class="h-bar-row"><div class="h-bar-label">Novembro</div><div class="h-bar-track"><div class="h-bar-fill info" style="width:36%">R$ 36K</div></div></div>
+      <div class="h-bar-row"><div class="h-bar-label">Dezembro</div><div class="h-bar-track"><div class="h-bar-fill primary" style="width:100%">R$ 100K ★★</div></div></div>
     </div>
   </div>
 </section>
 
 <!-- MIX DE PRODUTOS -->
 <section id="mix" class="fade-in">
-  <div class="section-tag">Análise</div>
-  <h2>Mix de Produtos</h2>
-  <p class="desc">Percussão representa 79% das compras. Top 10 produtos concentram mais de 60% do valor total.</p>
+  <div class="section-header">
+    <div class="section-tag">Análise</div>
+    <h2>Mix de Produtos</h2>
+    <p class="desc">Percussão representa 79% das compras. Top 10 produtos concentram mais de 60% do valor total.</p>
+  </div>
   
   <div class="grid-2">
     <div class="card">
       <h3>Distribuição por Categoria</h3>
-      <div style="margin-top:1.5rem">
-        <div style="margin-bottom:1rem">
-          <div style="display:flex;justify-content:space-between;margin-bottom:.3rem"><span style="font-weight:600">Percussões</span><span style="font-family:var(--font-mono);color:var(--red)">R$ 2.453K</span></div>
-          <div style="height:12px;background:var(--card2);border-radius:6px;overflow:hidden"><div style="width:79%;height:100%;background:var(--red);border-radius:6px"></div></div>
-          <div style="font-size:.75rem;color:var(--gray);margin-top:.2rem">79% do total — 19.230 peças</div>
+      <div style="margin-top:1.8rem">
+        <div style="margin-bottom:1.2rem">
+          <div style="display:flex;justify-content:space-between;margin-bottom:0.4rem"><span style="font-weight:600;color:var(--primary)">Percussões</span><span style="font-family:var(--font-body);color:var(--danger);font-weight:600">R$ 2.453K</span></div>
+          <div style="height:14px;background:var(--border-light);border-radius:7px;overflow:hidden"><div style="width:79%;height:100%;background:linear-gradient(90deg,#dc2626,#ef4444);border-radius:7px"></div></div>
+          <div style="font-size:0.8rem;color:var(--text-light);margin-top:0.3rem">79% do total — 19.230 peças</div>
         </div>
-        <div style="margin-bottom:1rem">
-          <div style="display:flex;justify-content:space-between;margin-bottom:.3rem"><span style="font-weight:600">Acessórios</span><span style="font-family:var(--font-mono);color:var(--blue)">R$ 428K</span></div>
-          <div style="height:12px;background:var(--card2);border-radius:6px;overflow:hidden"><div style="width:14%;height:100%;background:var(--blue);border-radius:6px"></div></div>
-          <div style="font-size:.75rem;color:var(--gray);margin-top:.2rem">14% do total — 2.334 peças</div>
+        <div style="margin-bottom:1.2rem">
+          <div style="display:flex;justify-content:space-between;margin-bottom:0.4rem"><span style="font-weight:600;color:var(--primary)">Acessórios</span><span style="font-family:var(--font-body);color:var(--info);font-weight:600">R$ 428K</span></div>
+          <div style="height:14px;background:var(--border-light);border-radius:7px;overflow:hidden"><div style="width:14%;height:100%;background:linear-gradient(90deg,#3b82f6,#60a5fa);border-radius:7px"></div></div>
+          <div style="font-size:0.8rem;color:var(--text-light);margin-top:0.3rem">14% do total — 2.334 peças</div>
         </div>
         <div>
-          <div style="display:flex;justify-content:space-between;margin-bottom:.3rem"><span style="font-weight:600">Cordas</span><span style="font-family:var(--font-mono);color:var(--gold)">R$ 237K</span></div>
-          <div style="height:12px;background:var(--card2);border-radius:6px;overflow:hidden"><div style="width:7%;height:100%;background:var(--gold);border-radius:6px"></div></div>
-          <div style="font-size:.75rem;color:var(--gray);margin-top:.2rem">7% do total — 463 peças</div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:0.4rem"><span style="font-weight:600;color:var(--primary)">Cordas</span><span style="font-family:var(--font-body);color:var(--accent);font-weight:600">R$ 237K</span></div>
+          <div style="height:14px;background:var(--border-light);border-radius:7px;overflow:hidden"><div style="width:7%;height:100%;background:linear-gradient(90deg,#c9a227,#d4b43a);border-radius:7px"></div></div>
+          <div style="font-size:0.8rem;color:var(--text-light);margin-top:0.3rem">7% do total — 463 peças</div>
         </div>
       </div>
     </div>
@@ -441,16 +571,16 @@ td.center{text-align:center}
       <table>
         <thead><tr><th>#</th><th>Código</th><th>Produto</th><th style="text-align:right">Total</th></tr></thead>
         <tbody>
-          <tr><td class="center">1</td><td style="font-family:var(--font-mono);font-size:.8rem">KSM-04 AL</td><td>Kit Samba Music Cônico Alumínio</td><td class="num" style="color:var(--red)">R$ 303K</td></tr>
-          <tr><td class="center">2</td><td style="font-family:var(--font-mono);font-size:.8rem">953MA</td><td>Timba Madeira 50x11 Verniz</td><td class="num">R$ 230K</td></tr>
-          <tr><td class="center">3</td><td style="font-family:var(--font-mono);font-size:.8rem">921MA</td><td>Rebolo Madeira 50x12 Verniz</td><td class="num">R$ 220K</td></tr>
-          <tr><td class="center">4</td><td style="font-family:var(--font-mono);font-size:.8rem">TZ10-1</td><td>Kit Bandinha 10 Instrumentos</td><td class="num">R$ 207K</td></tr>
-          <tr><td class="center">5</td><td style="font-family:var(--font-mono);font-size:.8rem">KSM-01 AL</td><td>Kit Samba Music Cônico Alumínio</td><td class="num">R$ 203K</td></tr>
-          <tr><td class="center">6</td><td style="font-family:var(--font-mono);font-size:.8rem">952MA</td><td>Timba Madeira 35x10 Verniz</td><td class="num">R$ 133K</td></tr>
-          <tr><td class="center">7</td><td style="font-family:var(--font-mono);font-size:.8rem">580 PVC TNT</td><td>Caixa Bateria Titanium</td><td class="num">R$ 102K</td></tr>
-          <tr><td class="center">8</td><td style="font-family:var(--font-mono);font-size:.8rem">DS514C RD</td><td>Bateria Infantil 14 Vinho</td><td class="num">R$ 99K</td></tr>
-          <tr><td class="center">9</td><td style="font-family:var(--font-mono);font-size:.8rem">580 PVC BKW</td><td>Caixa Bateria Preto Wood</td><td class="num">R$ 92K</td></tr>
-          <tr><td class="center">10</td><td style="font-family:var(--font-mono);font-size:.8rem">KSM-01 BK</td><td>Kit Samba Music Preto</td><td class="num">R$ 88K</td></tr>
+          <tr><td class="center">1</td><td style="font-family:var(--font-mono);font-size:0.8rem">KSM-04 AL</td><td>Kit Samba Music Cônico Alumínio</td><td class="num" style="color:var(--danger);font-weight:600">R$ 303K</td></tr>
+          <tr><td class="center">2</td><td style="font-family:var(--font-mono);font-size:0.8rem">953MA</td><td>Timba Madeira 50x11 Verniz</td><td class="num">R$ 230K</td></tr>
+          <tr><td class="center">3</td><td style="font-family:var(--font-mono);font-size:0.8rem">921MA</td><td>Rebolo Madeira 50x12 Verniz</td><td class="num">R$ 220K</td></tr>
+          <tr><td class="center">4</td><td style="font-family:var(--font-mono);font-size:0.8rem">TZ10-1</td><td>Kit Bandinha 10 Instrumentos</td><td class="num">R$ 207K</td></tr>
+          <tr><td class="center">5</td><td style="font-family:var(--font-mono);font-size:0.8rem">KSM-01 AL</td><td>Kit Samba Music Cônico Alumínio</td><td class="num">R$ 203K</td></tr>
+          <tr><td class="center">6</td><td style="font-family:var(--font-mono);font-size:0.8rem">952MA</td><td>Timba Madeira 35x10 Verniz</td><td class="num">R$ 133K</td></tr>
+          <tr><td class="center">7</td><td style="font-family:var(--font-mono);font-size:0.8rem">580 PVC TNT</td><td>Caixa Bateria Titanium</td><td class="num">R$ 102K</td></tr>
+          <tr><td class="center">8</td><td style="font-family:var(--font-mono);font-size:0.8rem">DS514C RD</td><td>Bateria Infantil 14 Vinho</td><td class="num">R$ 99K</td></tr>
+          <tr><td class="center">9</td><td style="font-family:var(--font-mono);font-size:0.8rem">580 PVC BKW</td><td>Caixa Bateria Preto Wood</td><td class="num">R$ 92K</td></tr>
+          <tr><td class="center">10</td><td style="font-family:var(--font-mono);font-size:0.8rem">KSM-01 BK</td><td>Kit Samba Music Preto</td><td class="num">R$ 88K</td></tr>
         </tbody>
       </table>
     </div>
@@ -459,24 +589,26 @@ td.center{text-align:center}
 
 <!-- ÚLTIMO PEDIDO -->
 <section id="ultimo-pedido" class="fade-in">
-  <div class="section-tag">Fevereiro 2026</div>
-  <h2>Último Pedido — R$ 87.374</h2>
-  <p class="desc">NF 60588 + 60589 | 27 de Fevereiro de 2026 | 343 peças em 41 itens</p>
+  <div class="section-header">
+    <div class="section-tag">Fevereiro 2026</div>
+    <h2>Último Pedido — R$ 87.374</h2>
+    <p class="desc">NF 60588 + 60589 | 27 de Fevereiro de 2026 | 343 peças em 41 itens</p>
+  </div>
   
   <div class="stats-row" style="margin-bottom:2rem">
     <div class="stat-card accent">
       <div class="value">R$ 65.107</div>
       <div class="label">Percussões (74%)</div>
     </div>
-    <div class="stat-card blue">
+    <div class="stat-card info">
       <div class="value">R$ 22.268</div>
       <div class="label">Acessórios (26%)</div>
     </div>
-    <div class="stat-card gold">
-      <div class="value">41</div>
+    <div class="stat-card">
+      <div class="value" style="color:var(--accent)">41</div>
       <div class="label">Itens distintos</div>
     </div>
-    <div class="stat-card green">
+    <div class="stat-card success">
       <div class="value">343</div>
       <div class="label">Peças totais</div>
     </div>
@@ -484,54 +616,56 @@ td.center{text-align:center}
   
   <div class="grid-3">
     <div class="card">
-      <h3 style="color:var(--red)">🥁 Kits Samba Music</h3>
+      <h3 style="color:var(--danger)">🥁 Kits Samba Music</h3>
       <p>KSM-04 em 4 cores (40 un) = R$ 23.946</p>
-      <p style="margin-top:.3rem">Carro-chefe do pedido. Todas as cores.</p>
+      <p style="margin-top:0.4rem;color:var(--text-light);font-size:0.85rem">Carro-chefe do pedido. Todas as cores.</p>
     </div>
     <div class="card">
-      <h3 style="color:var(--gold)">🎸 Linha Beatles</h3>
+      <h3 style="color:var(--accent)">🎸 Linha Beatles</h3>
       <p>Baterias DSB514 + BIBY14 (15 un) = R$ 14.224</p>
-      <p style="margin-top:.3rem">+ Kits MTB + Mesa MMBY = R$ 9.719</p>
+      <p style="margin-top:0.4rem;color:var(--text-light);font-size:0.85rem">+ Kits MTB + Mesa MMBY = R$ 9.719</p>
     </div>
     <div class="card">
-      <h3 style="color:var(--green)">🪘 Percussão Diversa</h3>
+      <h3 style="color:var(--success)">🪘 Percussão Diversa</h3>
       <p>Rebolos, Repiques, Caixas, Timbas, Pandeiros</p>
-      <p style="margin-top:.3rem">Variedade de cores e tamanhos</p>
+      <p style="margin-top:0.4rem;color:var(--text-light);font-size:0.85rem">Variedade de cores e tamanhos</p>
     </div>
   </div>
 </section>
 
 <!-- OPORTUNIDADES -->
 <section id="oportunidades" class="fade-in">
-  <div class="section-tag">Crescimento</div>
-  <h2>Oportunidades de Expansão</h2>
-  <p class="desc">Cross-sell em categorias sub-exploradas e upsell na linha existente.</p>
+  <div class="section-header">
+    <div class="section-tag">Crescimento</div>
+    <h2>Oportunidades de Expansão</h2>
+    <p class="desc">Cross-sell em categorias sub-exploradas e upsell na linha existente.</p>
+  </div>
   
   <div class="grid-2">
     <div class="opp-card cross">
       <h3>🔴 Cross-Sell — Produtos Novos</h3>
-      <p style="color:var(--gray);font-size:.85rem;margin-bottom:1rem">Produtos best-sellers PHX que o Magazine nunca comprou</p>
+      <p style="color:var(--text-light);font-size:0.9rem;margin-bottom:1.2rem">Produtos best-sellers PHX que o Magazine nunca comprou</p>
       <div class="item"><span class="name">Caixa Guerra 437ALS</span><span class="val">R$ 753K vendas PHX</span></div>
       <div class="item"><span class="name">Tantã 951MA</span><span class="val">R$ 705K vendas PHX</span></div>
       <div class="item"><span class="name">Tarol 438ALS</span><span class="val">R$ 403K vendas PHX</span></div>
       <div class="item"><span class="name">Bumbo 343ABLS</span><span class="val">R$ 423K vendas PHX</span></div>
       <div class="item"><span class="name">Tamborim SM TBA-55</span><span class="val">R$ 42K vendas PHX</span></div>
-      <div style="margin-top:1rem;padding:1rem;background:var(--red-glow);border-radius:8px">
-        <strong style="color:var(--red);font-size:.85rem">💡 Cordas = maior gap</strong>
-        <p style="color:var(--gray);font-size:.8rem;margin-top:.3rem">Magazine compra apenas 0,8% do potencial PHX em cordas (R$ 237K vs R$ 31M). Camerata e J.White são os mais vendidos e nunca entraram no mix.</p>
+      <div class="highlight-box">
+        <strong style="color:var(--danger);font-size:0.9rem">💡 Cordas = maior gap</strong>
+        <p>Magazine compra apenas 0,8% do potencial PHX em cordas (R$ 237K vs R$ 31M). Camerata e J.White são os mais vendidos e nunca entraram no mix.</p>
       </div>
     </div>
     
     <div class="opp-card up">
       <h3>🟢 Upsell & Volume</h3>
-      <p style="color:var(--gray);font-size:.85rem;margin-bottom:1rem">Expandir linhas que já compra + contrato de volume</p>
+      <p style="color:var(--text-light);font-size:0.9rem;margin-bottom:1.2rem">Expandir linhas que já compra + contrato de volume</p>
       <div class="item"><span class="name">Linha Beatles (premium)</span><span class="val">Já compra — expandir</span></div>
       <div class="item"><span class="name">Baixos PHX (BS-4, BS-5)</span><span class="val">R$ 1.386/un margem alta</span></div>
       <div class="item"><span class="name">Musicalização Infantil</span><span class="val">Segmento em crescimento</span></div>
       <div class="item"><span class="name">Pandeiros (todas as cores)</span><span class="val">Completar paleta</span></div>
-      <div style="margin-top:1rem;padding:1rem;background:rgba(16,185,129,.1);border-radius:8px">
-        <strong style="color:var(--green);font-size:.85rem">📋 Proposta de Contrato Key Account</strong>
-        <p style="color:var(--gray);font-size:.8rem;margin-top:.3rem">Meta: R$ 80-100K/mês fixo. Benefícios: prioridade de entrega, bloqueio antecipado de estoque, condições especiais, suporte dedicado.</p>
+      <div class="highlight-box" style="background:rgba(16,185,129,0.05);border-color:rgba(16,185,129,0.2)">
+        <strong style="color:var(--success);font-size:0.9rem">📋 Proposta de Contrato Key Account</strong>
+        <p>Meta: R$ 80-100K/mês fixo. Benefícios: prioridade de entrega, bloqueio antecipado de estoque, condições especiais, suporte dedicado.</p>
       </div>
     </div>
   </div>
@@ -539,9 +673,11 @@ td.center{text-align:center}
 
 <!-- PLANO 2026 -->
 <section id="plano" class="fade-in">
-  <div class="section-tag">Estratégia</div>
-  <h2>Plano de Negócios 2026</h2>
-  <p class="desc">Meta: R$ 1.000.000 até Dezembro de 2026. Distribuição trimestral baseada na sazonalidade histórica.</p>
+  <div class="section-header">
+    <div class="section-tag">Estratégia</div>
+    <h2>Plano de Negócios 2026</h2>
+    <p class="desc">Meta: R$ 1.000.000 até Dezembro de 2026. Distribuição trimestral baseada na sazonalidade histórica.</p>
+  </div>
   
   <div class="timeline">
     <div class="timeline-card q1">
@@ -591,25 +727,25 @@ td.center{text-align:center}
   </div>
   
   <!-- Monthly detail table -->
-  <div class="table-wrapper" style="margin-top:2rem">
+  <div class="table-wrapper" style="margin-top:2.5rem">
     <table>
       <thead>
         <tr><th>Mês</th><th style="text-align:right">Meta (R$)</th><th style="text-align:right">Realizado</th><th style="text-align:right">%</th><th>Ações Planejadas</th><th>Status</th></tr>
       </thead>
       <tbody>
-        <tr><td>Janeiro</td><td class="num">60.000</td><td class="num">15.960</td><td class="num" style="color:var(--red)">27%</td><td style="font-size:.8rem;color:var(--gray)">Primeiro pedido do ano</td><td><span class="badge badge-a">Realizado</span></td></tr>
-        <tr><td>Fevereiro</td><td class="num">80.000</td><td class="num" style="color:var(--green)">87.374</td><td class="num" style="color:var(--green)">109%</td><td style="font-size:.8rem;color:var(--gray)">Pedido grande — Percussão + Beatles</td><td><span class="badge badge-a">Realizado</span></td></tr>
-        <tr><td style="font-weight:600">Março</td><td class="num">80.000</td><td class="num">—</td><td class="num">—</td><td style="font-size:.8rem;color:var(--gold)">Pedido sugerido ~R$ 81K</td><td><span class="badge badge-new">Pendente</span></td></tr>
-        <tr><td>Abril</td><td class="num">100.000</td><td class="num">—</td><td class="num">—</td><td style="font-size:.8rem;color:var(--gray)">Pico sazonal. Apresentar cordas.</td><td><span class="badge badge-b">Planejado</span></td></tr>
-        <tr><td>Maio</td><td class="num">60.000</td><td class="num">—</td><td class="num">—</td><td style="font-size:.8rem;color:var(--gray)">Manutenção. Giro rápido.</td><td><span class="badge badge-b">Planejado</span></td></tr>
-        <tr><td>Junho</td><td class="num">70.000</td><td class="num">—</td><td class="num">—</td><td style="font-size:.8rem;color:var(--gray)">São João. Percussão.</td><td><span class="badge badge-b">Planejado</span></td></tr>
-        <tr><td>Julho</td><td class="num">60.000</td><td class="num">—</td><td class="num">—</td><td style="font-size:.8rem;color:var(--gray)">Reposição + musicalização.</td><td><span class="badge badge-b">Planejado</span></td></tr>
-        <tr><td>Agosto</td><td class="num">80.000</td><td class="num">—</td><td class="num">—</td><td style="font-size:.8rem;color:var(--gray)">Ramp-up Q4.</td><td><span class="badge badge-b">Planejado</span></td></tr>
-        <tr><td>Setembro</td><td class="num">100.000</td><td class="num">—</td><td class="num">—</td><td style="font-size:.8rem;color:var(--gray)">Pico sazonal.</td><td><span class="badge badge-b">Planejado</span></td></tr>
-        <tr><td>Outubro</td><td class="num">90.000</td><td class="num">—</td><td class="num">—</td><td style="font-size:.8rem;color:var(--gray)">Continuação pico.</td><td><span class="badge badge-b">Planejado</span></td></tr>
-        <tr><td>Novembro</td><td class="num">70.000</td><td class="num">—</td><td class="num">—</td><td style="font-size:.8rem;color:var(--gray)">Black Friday.</td><td><span class="badge badge-b">Planejado</span></td></tr>
-        <tr><td>Dezembro</td><td class="num">120.000</td><td class="num">—</td><td class="num">—</td><td style="font-size:.8rem;color:var(--gray)">Natal + estoque 2027.</td><td><span class="badge badge-b">Planejado</span></td></tr>
-        <tr style="background:var(--card2)"><td style="font-weight:700">TOTAL</td><td class="num" style="font-weight:700;color:var(--red)">970.000</td><td class="num" style="font-weight:700">103.334</td><td class="num" style="font-weight:700">11%</td><td></td><td></td></tr>
+        <tr><td>Janeiro</td><td class="num">60.000</td><td class="num">15.960</td><td class="num" style="color:var(--danger)">27%</td><td style="font-size:0.8rem;color:var(--text-light)">Primeiro pedido do ano</td><td><span class="badge badge-a">Realizado</span></td></tr>
+        <tr><td>Fevereiro</td><td class="num">80.000</td><td class="num" style="color:var(--success);font-weight:600">87.374</td><td class="num" style="color:var(--success);font-weight:600">109%</td><td style="font-size:0.8rem;color:var(--text-light)">Pedido grande — Percussão + Beatles</td><td><span class="badge badge-a">Realizado</span></td></tr>
+        <tr><td style="font-weight:700;color:var(--primary)">Março</td><td class="num">80.000</td><td class="num">—</td><td class="num">—</td><td style="font-size:0.8rem;color:var(--accent);font-weight:500">Pedido sugerido ~R$ 81K</td><td><span class="badge badge-new">Pendente</span></td></tr>
+        <tr><td>Abril</td><td class="num">100.000</td><td class="num">—</td><td class="num">—</td><td style="font-size:0.8rem;color:var(--text-light)">Pico sazonal. Apresentar cordas.</td><td><span class="badge badge-b">Planejado</span></td></tr>
+        <tr><td>Maio</td><td class="num">60.000</td><td class="num">—</td><td class="num">—</td><td style="font-size:0.8rem;color:var(--text-light)">Manutenção. Giro rápido.</td><td><span class="badge badge-b">Planejado</span></td></tr>
+        <tr><td>Junho</td><td class="num">70.000</td><td class="num">—</td><td class="num">—</td><td style="font-size:0.8rem;color:var(--text-light)">São João. Percussão.</td><td><span class="badge badge-b">Planejado</span></td></tr>
+        <tr><td>Julho</td><td class="num">60.000</td><td class="num">—</td><td class="num">—</td><td style="font-size:0.8rem;color:var(--text-light)">Reposição + musicalização.</td><td><span class="badge badge-b">Planejado</span></td></tr>
+        <tr><td>Agosto</td><td class="num">80.000</td><td class="num">—</td><td class="num">—</td><td style="font-size:0.8rem;color:var(--text-light)">Ramp-up Q4.</td><td><span class="badge badge-b">Planejado</span></td></tr>
+        <tr><td>Setembro</td><td class="num">100.000</td><td class="num">—</td><td class="num">—</td><td style="font-size:0.8rem;color:var(--text-light)">Pico sazonal.</td><td><span class="badge badge-b">Planejado</span></td></tr>
+        <tr><td>Outubro</td><td class="num">90.000</td><td class="num">—</td><td class="num">—</td><td style="font-size:0.8rem;color:var(--text-light)">Continuação pico.</td><td><span class="badge badge-b">Planejado</span></td></tr>
+        <tr><td>Novembro</td><td class="num">70.000</td><td class="num">—</td><td class="num">—</td><td style="font-size:0.8rem;color:var(--text-light)">Black Friday.</td><td><span class="badge badge-b">Planejado</span></td></tr>
+        <tr><td>Dezembro</td><td class="num">120.000</td><td class="num">—</td><td class="num">—</td><td style="font-size:0.8rem;color:var(--text-light)">Natal + estoque 2027.</td><td><span class="badge badge-b">Planejado</span></td></tr>
+        <tr style="background:var(--bg)"><td style="font-weight:700;color:var(--primary)">TOTAL</td><td class="num" style="font-weight:700;color:var(--danger)">970.000</td><td class="num" style="font-weight:700">103.334</td><td class="num" style="font-weight:700">11%</td><td></td><td></td></tr>
       </tbody>
     </table>
   </div>
@@ -617,9 +753,11 @@ td.center{text-align:center}
 
 <!-- PEDIDO MARÇO -->
 <section id="pedido" class="fade-in">
-  <div class="section-tag">Ação Imediata</div>
-  <h2>Sugestão de Pedido — Março 2026</h2>
-  <p class="desc">Baseado no histórico de compras do Magazine + estoque disponível PHX. Organizado por prioridade.</p>
+  <div class="section-header">
+    <div class="section-tag">Ação Imediata</div>
+    <h2>Sugestão de Pedido — Março 2026</h2>
+    <p class="desc">Baseado no histórico de compras do Magazine + estoque disponível PHX. Organizado por prioridade.</p>
+  </div>
   
   <div class="table-wrapper">
     <table>
@@ -629,41 +767,41 @@ td.center{text-align:center}
       <tbody>
         <!-- PRIORIDADE A -->
         <tr class="cat-header a"><td colspan="8">★ PRIORIDADE A — ALTO VALOR / ALTA DEMANDA</td></tr>
-        <tr><td><span class="badge badge-a">A</span></td><td style="font-family:var(--font-mono);font-size:.8rem">953MA</td><td>Timba Madeira Verniz 50x11</td><td class="center">140</td><td class="center" style="font-weight:600">50</td><td class="num">197,95</td><td class="num" style="font-weight:600">9.897,50</td><td style="font-size:.75rem;color:var(--gray)">Top 2. Intervalo 36 dias.</td></tr>
-        <tr><td><span class="badge badge-a">A</span></td><td style="font-family:var(--font-mono);font-size:.8rem">954MA</td><td>Timba Madeira Verniz 70x13</td><td class="center">83</td><td class="center" style="font-weight:600">15</td><td class="num">301,56</td><td class="num" style="font-weight:600">4.523,40</td><td style="font-size:.75rem;color:var(--gray)">Complementa timbas.</td></tr>
-        <tr><td><span class="badge badge-a">A</span></td><td style="font-family:var(--font-mono);font-size:.8rem">952MA</td><td>Timba Madeira Verniz 35x10</td><td class="center">26</td><td class="center" style="font-weight:600">20</td><td class="num">163,24</td><td class="num" style="font-weight:600">3.264,80</td><td style="font-size:.75rem;color:var(--gray)">Estoque baixo — priorizar.</td></tr>
-        <tr><td><span class="badge badge-a">A</span></td><td style="font-family:var(--font-mono);font-size:.8rem">955MA</td><td>Timba Madeira Verniz 90x14</td><td class="center">23</td><td class="center" style="font-weight:600">15</td><td class="num">338,48</td><td class="num" style="font-weight:600">5.077,20</td><td style="font-size:.75rem;color:var(--gray)">Comprou 10 em Fev.</td></tr>
-        <tr><td><span class="badge badge-a">A</span></td><td style="font-family:var(--font-mono);font-size:.8rem">909MM MA</td><td>Repique de Mão 30x12 Verniz</td><td class="center">20</td><td class="center" style="font-weight:600">20</td><td class="num">182,80</td><td class="num" style="font-weight:600">3.656,00</td><td style="font-size:.75rem;color:var(--gray)">Esgotar estoque.</td></tr>
-        <tr><td><span class="badge badge-a">A</span></td><td style="font-family:var(--font-mono);font-size:.8rem">DSB514-BL</td><td>Bateria 5pc Beatles Yellow Sub</td><td class="center">24</td><td class="center" style="font-weight:600">5</td><td class="num">1.899,00</td><td class="num" style="font-weight:600;color:var(--red)">9.495,00</td><td style="font-size:.75rem;color:var(--gray)">Premium Beatles.</td></tr>
-        <tr><td><span class="badge badge-a">A</span></td><td style="font-family:var(--font-mono);font-size:.8rem">BIBY14-YS</td><td>Bateria 3pc Beatles Yellow Sub</td><td class="center">33</td><td class="center" style="font-weight:600">5</td><td class="num">1.077,30</td><td class="num" style="font-weight:600">5.386,50</td><td style="font-size:.75rem;color:var(--gray)">Infantil Beatles.</td></tr>
-        <tr><td><span class="badge badge-a">A</span></td><td style="font-family:var(--font-mono);font-size:.8rem">BIBY14-BK</td><td>Bateria 3pc Beatles Abbey Road</td><td class="center">32</td><td class="center" style="font-weight:600">5</td><td class="num">1.077,30</td><td class="num" style="font-weight:600">5.386,50</td><td style="font-size:.75rem;color:var(--gray)">Infantil Beatles.</td></tr>
-        <tr><td><span class="badge badge-a">A</span></td><td style="font-family:var(--font-mono);font-size:.8rem">BS-4 S MBK</td><td>Baixo PHX Moderna IV Preto</td><td class="center">22</td><td class="center" style="font-weight:600">5</td><td class="num">1.386,16</td><td class="num" style="font-weight:600;color:var(--red)">6.930,80</td><td style="font-size:.75rem;color:var(--gray)">Margem alta.</td></tr>
+        <tr><td><span class="badge badge-a">A</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">953MA</td><td>Timba Madeira Verniz 50x11</td><td class="center">140</td><td class="center" style="font-weight:600">50</td><td class="num">197,95</td><td class="num" style="font-weight:600">9.897,50</td><td style="font-size:0.75rem;color:var(--text-light)">Top 2. Intervalo 36 dias.</td></tr>
+        <tr><td><span class="badge badge-a">A</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">954MA</td><td>Timba Madeira Verniz 70x13</td><td class="center">83</td><td class="center" style="font-weight:600">15</td><td class="num">301,56</td><td class="num" style="font-weight:600">4.523,40</td><td style="font-size:0.75rem;color:var(--text-light)">Complementa timbas.</td></tr>
+        <tr><td><span class="badge badge-a">A</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">952MA</td><td>Timba Madeira Verniz 35x10</td><td class="center">26</td><td class="center" style="font-weight:600">20</td><td class="num">163,24</td><td class="num" style="font-weight:600">3.264,80</td><td style="font-size:0.75rem;color:var(--text-light)">Estoque baixo — priorizar.</td></tr>
+        <tr><td><span class="badge badge-a">A</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">955MA</td><td>Timba Madeira Verniz 90x14</td><td class="center">23</td><td class="center" style="font-weight:600">15</td><td class="num">338,48</td><td class="num" style="font-weight:600">5.077,20</td><td style="font-size:0.75rem;color:var(--text-light)">Comprou 10 em Fev.</td></tr>
+        <tr><td><span class="badge badge-a">A</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">909MM MA</td><td>Repique de Mão 30x12 Verniz</td><td class="center">20</td><td class="center" style="font-weight:600">20</td><td class="num">182,80</td><td class="num" style="font-weight:600">3.656,00</td><td style="font-size:0.75rem;color:var(--text-light)">Esgotar estoque.</td></tr>
+        <tr><td><span class="badge badge-a">A</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">DSB514-BL</td><td>Bateria 5pc Beatles Yellow Sub</td><td class="center">24</td><td class="center" style="font-weight:600">5</td><td class="num">1.899,00</td><td class="num" style="font-weight:600;color:var(--danger)">9.495,00</td><td style="font-size:0.75rem;color:var(--text-light)">Premium Beatles.</td></tr>
+        <tr><td><span class="badge badge-a">A</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">BIBY14-YS</td><td>Bateria 3pc Beatles Yellow Sub</td><td class="center">33</td><td class="center" style="font-weight:600">5</td><td class="num">1.077,30</td><td class="num" style="font-weight:600">5.386,50</td><td style="font-size:0.75rem;color:var(--text-light)">Infantil Beatles.</td></tr>
+        <tr><td><span class="badge badge-a">A</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">BIBY14-BK</td><td>Bateria 3pc Beatles Abbey Road</td><td class="center">32</td><td class="center" style="font-weight:600">5</td><td class="num">1.077,30</td><td class="num" style="font-weight:600">5.386,50</td><td style="font-size:0.75rem;color:var(--text-light)">Infantil Beatles.</td></tr>
+        <tr><td><span class="badge badge-a">A</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">BS-4 S MBK</td><td>Baixo PHX Moderna IV Preto</td><td class="center">22</td><td class="center" style="font-weight:600">5</td><td class="num">1.386,16</td><td class="num" style="font-weight:600;color:var(--danger)">6.930,80</td><td style="font-size:0.75rem;color:var(--text-light)">Margem alta.</td></tr>
         
         <!-- PRIORIDADE B -->
         <tr class="cat-header b"><td colspan="8">★ PRIORIDADE B — PERCUSSÃO COMPLEMENTAR</td></tr>
-        <tr><td><span class="badge badge-b">B</span></td><td style="font-family:var(--font-mono);font-size:.8rem">PD10LE TNT</td><td>Pandeiro Titanium 10 Pele Leitosa</td><td class="center">104</td><td class="center" style="font-weight:600">30</td><td class="num">119,29</td><td class="num" style="font-weight:600">3.578,70</td><td style="font-size:.75rem;color:var(--gray)">Top vendedor. 33 dias.</td></tr>
-        <tr><td><span class="badge badge-b">B</span></td><td style="font-family:var(--font-mono);font-size:.8rem">PD10LE BKW</td><td>Pandeiro Preto Wood Pele Leitosa</td><td class="center">47</td><td class="center" style="font-weight:600">15</td><td class="num">119,29</td><td class="num" style="font-weight:600">1.789,35</td><td style="font-size:.75rem;color:var(--gray)">Variação cor.</td></tr>
-        <tr><td><span class="badge badge-b">B</span></td><td style="font-family:var(--font-mono);font-size:.8rem">PD10LE RD</td><td>Pandeiro Vermelho Pele Leitosa</td><td class="center">12</td><td class="center" style="font-weight:600">10</td><td class="num">119,29</td><td class="num" style="font-weight:600">1.192,90</td><td style="font-size:.75rem;color:var(--gray)">Estoque baixo.</td></tr>
-        <tr><td><span class="badge badge-b">B</span></td><td style="font-family:var(--font-mono);font-size:.8rem">921MA BLS</td><td>Rebolo SM Mad. Azul Celeste</td><td class="center">11</td><td class="center" style="font-weight:600">10</td><td class="num">281,81</td><td class="num" style="font-weight:600">2.818,10</td><td style="font-size:.75rem;color:var(--gray)">Estoque baixo.</td></tr>
-        <tr><td><span class="badge badge-b">B</span></td><td style="font-family:var(--font-mono);font-size:.8rem">921MA BKW</td><td>Rebolo SM Mad. Preto Wood</td><td class="center">14</td><td class="center" style="font-weight:600">10</td><td class="num">281,81</td><td class="num" style="font-weight:600">2.818,10</td><td style="font-size:.75rem;color:var(--gray)">Complementar.</td></tr>
-        <tr><td><span class="badge badge-b">B</span></td><td style="font-family:var(--font-mono);font-size:.8rem">85A</td><td>Afuche Sem Capa</td><td class="center">907</td><td class="center" style="font-weight:600">40</td><td class="num">66,20</td><td class="num" style="font-weight:600">2.648,00</td><td style="font-size:.75rem;color:var(--gray)">Alto giro.</td></tr>
-        <tr><td><span class="badge badge-b">B</span></td><td style="font-family:var(--font-mono);font-size:.8rem">87ABS BK</td><td>Pandeiro ABS Preto 10</td><td class="center">438</td><td class="center" style="font-weight:600">15</td><td class="num">80,53</td><td class="num" style="font-weight:600">1.207,95</td><td style="font-size:.75rem;color:var(--gray)">Entrada de linha.</td></tr>
-        <tr><td><span class="badge badge-b">B</span></td><td style="font-family:var(--font-mono);font-size:.8rem">213 NP</td><td>Timba 70x13 Verniz Napa</td><td class="center">87</td><td class="center" style="font-weight:600">5</td><td class="num">282,31</td><td class="num" style="font-weight:600">1.411,55</td><td style="font-size:.75rem;color:var(--gray)">Linha Napa.</td></tr>
+        <tr><td><span class="badge badge-b">B</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">PD10LE TNT</td><td>Pandeiro Titanium 10 Pele Leitosa</td><td class="center">104</td><td class="center" style="font-weight:600">30</td><td class="num">119,29</td><td class="num" style="font-weight:600">3.578,70</td><td style="font-size:0.75rem;color:var(--text-light)">Top vendedor. 33 dias.</td></tr>
+        <tr><td><span class="badge badge-b">B</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">PD10LE BKW</td><td>Pandeiro Preto Wood Pele Leitosa</td><td class="center">47</td><td class="center" style="font-weight:600">15</td><td class="num">119,29</td><td class="num" style="font-weight:600">1.789,35</td><td style="font-size:0.75rem;color:var(--text-light)">Variação cor.</td></tr>
+        <tr><td><span class="badge badge-b">B</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">PD10LE RD</td><td>Pandeiro Vermelho Pele Leitosa</td><td class="center">12</td><td class="center" style="font-weight:600">10</td><td class="num">119,29</td><td class="num" style="font-weight:600">1.192,90</td><td style="font-size:0.75rem;color:var(--text-light)">Estoque baixo.</td></tr>
+        <tr><td><span class="badge badge-b">B</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">921MA BLS</td><td>Rebolo SM Mad. Azul Celeste</td><td class="center">11</td><td class="center" style="font-weight:600">10</td><td class="num">281,81</td><td class="num" style="font-weight:600">2.818,10</td><td style="font-size:0.75rem;color:var(--text-light)">Estoque baixo.</td></tr>
+        <tr><td><span class="badge badge-b">B</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">921MA BKW</td><td>Rebolo SM Mad. Preto Wood</td><td class="center">14</td><td class="center" style="font-weight:600">10</td><td class="num">281,81</td><td class="num" style="font-weight:600">2.818,10</td><td style="font-size:0.75rem;color:var(--text-light)">Complementar.</td></tr>
+        <tr><td><span class="badge badge-b">B</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">85A</td><td>Afuche Sem Capa</td><td class="center">907</td><td class="center" style="font-weight:600">40</td><td class="num">66,20</td><td class="num" style="font-weight:600">2.648,00</td><td style="font-size:0.75rem;color:var(--text-light)">Alto giro.</td></tr>
+        <tr><td><span class="badge badge-b">B</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">87ABS BK</td><td>Pandeiro ABS Preto 10</td><td class="center">438</td><td class="center" style="font-weight:600">15</td><td class="num">80,53</td><td class="num" style="font-weight:600">1.207,95</td><td style="font-size:0.75rem;color:var(--text-light)">Entrada de linha.</td></tr>
+        <tr><td><span class="badge badge-b">B</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">213 NP</td><td>Timba 70x13 Verniz Napa</td><td class="center">87</td><td class="center" style="font-weight:600">5</td><td class="num">282,31</td><td class="num" style="font-weight:600">1.411,55</td><td style="font-size:0.75rem;color:var(--text-light)">Linha Napa.</td></tr>
 
         <!-- PRIORIDADE C -->
         <tr class="cat-header c"><td colspan="8">★ PRIORIDADE C — MUSICALIZAÇÃO & ACESSÓRIOS</td></tr>
-        <tr><td><span class="badge badge-c">C</span></td><td style="font-family:var(--font-mono);font-size:.8rem">TZ15-1</td><td>Kit Musicalização 15 Instrumentos</td><td class="center">369</td><td class="center" style="font-weight:600">15</td><td class="num">265,00</td><td class="num" style="font-weight:600">3.975,00</td><td style="font-size:.75rem;color:var(--gray)">Infantil crescendo.</td></tr>
-        <tr><td><span class="badge badge-c">C</span></td><td style="font-family:var(--font-mono);font-size:.8rem">MTB-BL</td><td>Kit Musicalização Beatles BL</td><td class="center">965</td><td class="center" style="font-weight:600">15</td><td class="num">258,00</td><td class="num" style="font-weight:600">3.870,00</td><td style="font-size:.75rem;color:var(--gray)">Beatles.</td></tr>
-        <tr><td><span class="badge badge-c">C</span></td><td style="font-family:var(--font-mono);font-size:.8rem">MTB-YL</td><td>Kit Musicalização Beatles YL</td><td class="center">948</td><td class="center" style="font-weight:600">15</td><td class="num">258,00</td><td class="num" style="font-weight:600">3.870,00</td><td style="font-size:.75rem;color:var(--gray)">Beatles.</td></tr>
-        <tr><td><span class="badge badge-c">C</span></td><td style="font-family:var(--font-mono);font-size:.8rem">MMBY-5</td><td>Mesa Musicalização Beatles YS</td><td class="center">457</td><td class="center" style="font-weight:600">15</td><td class="num">255,15</td><td class="num" style="font-weight:600">3.827,25</td><td style="font-size:.75rem;color:var(--gray)">Exposição loja.</td></tr>
-        <tr><td><span class="badge badge-c">C</span></td><td style="font-family:var(--font-mono);font-size:.8rem">TG8-2</td><td>Metalofone Colorido 8 Notas</td><td class="center">701</td><td class="center" style="font-weight:600">10</td><td class="num">58,43</td><td class="num" style="font-weight:600">584,30</td><td style="font-size:.75rem;color:var(--gray)">Infantil.</td></tr>
-        <tr><td><span class="badge badge-c">C</span></td><td style="font-family:var(--font-mono);font-size:.8rem">79</td><td>Triângulo Cromado 25cm</td><td class="center">160</td><td class="center" style="font-weight:600">30</td><td class="num">35,60</td><td class="num" style="font-weight:600">1.067,97</td><td style="font-size:.75rem;color:var(--gray)">Alto giro.</td></tr>
+        <tr><td><span class="badge badge-c">C</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">TZ15-1</td><td>Kit Musicalização 15 Instrumentos</td><td class="center">369</td><td class="center" style="font-weight:600">15</td><td class="num">265,00</td><td class="num" style="font-weight:600">3.975,00</td><td style="font-size:0.75rem;color:var(--text-light)">Infantil crescendo.</td></tr>
+        <tr><td><span class="badge badge-c">C</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">MTB-BL</td><td>Kit Musicalização Beatles BL</td><td class="center">965</td><td class="center" style="font-weight:600">15</td><td class="num">258,00</td><td class="num" style="font-weight:600">3.870,00</td><td style="font-size:0.75rem;color:var(--text-light)">Beatles.</td></tr>
+        <tr><td><span class="badge badge-c">C</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">MTB-YL</td><td>Kit Musicalização Beatles YL</td><td class="center">948</td><td class="center" style="font-weight:600">15</td><td class="num">258,00</td><td class="num" style="font-weight:600">3.870,00</td><td style="font-size:0.75rem;color:var(--text-light)">Beatles.</td></tr>
+        <tr><td><span class="badge badge-c">C</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">MMBY-5</td><td>Mesa Musicalização Beatles YS</td><td class="center">457</td><td class="center" style="font-weight:600">15</td><td class="num">255,15</td><td class="num" style="font-weight:600">3.827,25</td><td style="font-size:0.75rem;color:var(--text-light)">Exposição loja.</td></tr>
+        <tr><td><span class="badge badge-c">C</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">TG8-2</td><td>Metalofone Colorido 8 Notas</td><td class="center">701</td><td class="center" style="font-weight:600">10</td><td class="num">58,43</td><td class="num" style="font-weight:600">584,30</td><td style="font-size:0.75rem;color:var(--text-light)">Infantil.</td></tr>
+        <tr><td><span class="badge badge-c">C</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">79</td><td>Triângulo Cromado 25cm</td><td class="center">160</td><td class="center" style="font-weight:600">30</td><td class="num">35,60</td><td class="num" style="font-weight:600">1.067,97</td><td style="font-size:0.75rem;color:var(--text-light)">Alto giro.</td></tr>
 
         <!-- CROSS-SELL -->
         <tr class="cat-header new"><td colspan="8">★ NOVIDADE — CROSS-SELL (NUNCA COMPROU)</td></tr>
-        <tr><td><span class="badge badge-new">NEW</span></td><td style="font-family:var(--font-mono);font-size:.8rem">438ALS</td><td>Tarol Alumínio Liso 10x14</td><td class="center">35</td><td class="center" style="font-weight:600">5</td><td class="num">267,57</td><td class="num" style="font-weight:600;color:var(--gold)">1.337,85</td><td style="font-size:.75rem;color:var(--gold)">R$ 403K vendas PHX!</td></tr>
-        <tr><td><span class="badge badge-new">NEW</span></td><td style="font-family:var(--font-mono);font-size:.8rem">TBA-55 AL</td><td>Tamborim SM Alumínio 55mm</td><td class="center">51</td><td class="center" style="font-weight:600">10</td><td class="num">92,38</td><td class="num" style="font-weight:600;color:var(--gold)">923,80</td><td style="font-size:.75rem;color:var(--gold)">Novo para Magazine.</td></tr>
-        <tr><td><span class="badge badge-new">NEW</span></td><td style="font-family:var(--font-mono);font-size:.8rem">83ABS-BL LE</td><td>Pandeiro ABS Azul 10 Leitosa</td><td class="center">62</td><td class="center" style="font-weight:600">10</td><td class="num">80,53</td><td class="num" style="font-weight:600;color:var(--gold)">805,30</td><td style="font-size:.75rem;color:var(--gold)">Cor exclusiva.</td></tr>
+        <tr><td><span class="badge badge-new">NEW</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">438ALS</td><td>Tarol Alumínio Liso 10x14</td><td class="center">35</td><td class="center" style="font-weight:600">5</td><td class="num">267,57</td><td class="num" style="font-weight:600;color:var(--accent)">1.337,85</td><td style="font-size:0.75rem;color:var(--accent);font-weight:500">R$ 403K vendas PHX!</td></tr>
+        <tr><td><span class="badge badge-new">NEW</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">TBA-55 AL</td><td>Tamborim SM Alumínio 55mm</td><td class="center">51</td><td class="center" style="font-weight:600">10</td><td class="num">92,38</td><td class="num" style="font-weight:600;color:var(--accent)">923,80</td><td style="font-size:0.75rem;color:var(--accent);font-weight:500">Novo para Magazine.</td></tr>
+        <tr><td><span class="badge badge-new">NEW</span></td><td style="font-family:var(--font-mono);font-size:0.8rem">83ABS-BL LE</td><td>Pandeiro ABS Azul 10 Leitosa</td><td class="center">62</td><td class="center" style="font-weight:600">10</td><td class="num">80,53</td><td class="num" style="font-weight:600;color:var(--accent)">805,30</td><td style="font-size:0.75rem;color:var(--accent);font-weight:500">Cor exclusiva.</td></tr>
       </tbody>
     </table>
   </div>
@@ -675,9 +813,9 @@ td.center{text-align:center}
 </section>
 
 <!-- FOOTER -->
-<section style="padding:3rem 4rem;text-align:center;border-top:1px solid rgba(255,255,255,.03)">
-  <p style="color:var(--gray2);font-size:.85rem">PHX Instrumentos — Parceria que gera resultado</p>
-  <p style="color:var(--gray3);font-size:.75rem;margin-top:.3rem">Dados extraídos em 02/Mar/2026 | Base Magazine Pro + Base Vendas PHX + Estoque Percussão</p>
+<section class="footer-section">
+  <p>PHX Instrumentos — Parceria que gera resultado</p>
+  <p>Dados extraídos em 02/Mar/2026 | Base Magazine Pro + Base Vendas PHX + Estoque Percussão</p>
 </section>
 
 <script>
@@ -686,6 +824,27 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  if(window.scrollY > 50) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+// Smooth scroll for nav links
+document.querySelectorAll('nav a').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if(target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
 </script>
 
 </body>
